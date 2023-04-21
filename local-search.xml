@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>第一篇博客</title>
+    <link href="/2023/04/21/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2023/04/21/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<h3 id="我的第一篇博客"><a href="#我的第一篇博客" class="headerlink" title="我的第一篇博客"></a>我的第一篇博客</h3><p>现在很多网站页面里都有搜索模块，包括在线搜索、站内搜索等等，尤其是博客类网站，文章搜索功能就显得比较重要，现在以个人博客网站为例，详细介绍如何给页面添加搜索功能模块，至于如何搭建个人博客网站，可以参考这篇文章：<a href="https://knightyun.github.io/2018/04/01/github-pages-blog%EF%BC%9B">https://knightyun.github.io/2018/04/01/github-pages-blog；</a><br>功能分析</p><p>为网页添加搜索模块的第三方网站有不少，实现效果也都不错，既然人家都能通过代码实现此功能，与其过度依赖第三方，何不自己研究一下原理自己实现呢*_*；</p><p>网页内搜索功能无非就是在文本输入框内输入一串想要搜索的关键字符串，点击搜索按钮后查找匹配出站内所有文章的匹配结果进行输出，再附上一个文章的链接；针对这个功能，作者本人第一时间想到的则是前端领域里的 Ajax，利用 XMLHttpRequest() 实现数据的交互，不清楚的可以自行百度快速补习，然后一般博客类网站都有 RSS 订阅功能及其数据页面，不清楚的也可以迅速百度了解一下，其实就是站内某个目录内存在一个叫 feed.xml 或者类似名字的页面，XML格式的，早期用于实现新闻内容订阅的，现在用的也比较广泛，里面存储的就是文章相关的一些数据，因此我们就可以获取这个文件里面的所有内容然后实现搜索匹配；</p><p>如果像我一样用 Gihub Pages 搭建的个人博客网站的话，无论用的 jekyll 或者 hexo，一般这个 feed.xml 文件就位于 根目录 下，并且该文件同时记录着某一篇文章所对应的 标题、页面链接、文章内容 等内容，这三个部分后面将用到，xml 内容大致如下：<br>————————————————<br>版权声明：本文为CSDN博主「瑝琦」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/KNIGH_YUN/article/details/88125328">https://blog.csdn.net/KNIGH_YUN/article/details/88125328</a></p><p><img src="test.png" alt="图片引用方法二"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>我的博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技术 测试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>测试文章</title>
     <link href="/2023/04/20/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
     <url>/2023/04/20/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
