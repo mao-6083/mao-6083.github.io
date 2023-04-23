@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>博客文章操作</title>
+    <link href="/2023/04/23/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/"/>
+    <url>/2023/04/23/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<p>在上一篇博客中记录了个人博客从无到有的搭建，这篇博客就来记录一下一些关于博客文章相关的操作。</p><p>首先找到自己博客所在的文件在，我的是在D:\Workspace\Myblog\hexo-blog，接着在地址框里输入cmd进入命令行窗口（或者是在该目录下右键git bash here）。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">在/source/_posts目录下新建一个 文件名.md 文件，该文件就是我们用来写博客的文件。</span><br>hexo new &quot;文件名&quot;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">删除博客的话直接在对应目录下删除对应的markdown文件即可。</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">拓展：markdown文件中引入图片和超链接：</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">![描述信息](图片名称带后缀)    图片放在和markdown文件同级目录下的同名文件夹中。</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">[描述信息](超链接地址)  注意英文状态</span><br></code></pre></td></tr></table></figure><p>当在本地文件夹下进行修改以后，进行如下操作：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">清除缓存文件 (db.json) 和已生成的静态文件 (public)。</span><br>hexo clean  <br><span class="hljs-meta prompt_">#</span><span class="language-bash">是hexo generate命令的简写，生成静态文件。</span><br>hexo g     <br><span class="hljs-meta prompt_">#</span><span class="language-bash">是hexo server的简写，启动服务器。默认情况下，访问网址为：http://localhost:4000/。</span><br>hexo s     <br><span class="hljs-meta prompt_">#</span><span class="language-bash">是hexo deploy命令的简写，部署网站，同步到你的个人网站中了(博客在本机访问时不可以进行此操作，否则会报错)</span><br>hexo d      <br></code></pre></td></tr></table></figure><p>目前先总结这些常用的操作，后续会不断补充。了解更多可以参考官网：<a href="https://hexo.io/zh-cn/docs/commands.html">hexo官网</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>我的博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>博客</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Idea中的快捷键</title>
     <link href="/2023/04/22/Idea%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <url>/2023/04/22/Idea%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
