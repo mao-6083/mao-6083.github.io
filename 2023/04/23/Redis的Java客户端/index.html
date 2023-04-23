@@ -17,22 +17,34 @@
   <meta name="keywords" content="">
   
     <meta name="description" content="画画的baby的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis的Java客户端">
+<meta property="og:url" content="http://example.com/2023/04/23/Redis%E7%9A%84Java%E5%AE%A2%E6%88%B7%E7%AB%AF/index.html">
 <meta property="og:site_name" content="画画的baby">
 <meta property="og:description" content="画画的baby的个人博客">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p6.jpg">
+<meta property="article:published_time" content="2023-04-23T12:31:16.000Z">
+<meta property="article:modified_time" content="2023-04-23T12:38:59.054Z">
 <meta property="article:author" content="mao-6083">
+<meta property="article:tag" content="Nosql">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/p6.jpg">
   
   
   
-  <title>分类 - 画画的baby</title>
+  <title>Redis的Java客户端 - 画画的baby</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -99,7 +111,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -199,15 +211,63 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/p4.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/p3.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="分类"></span>
+            <span id="subtitle" data-typed-text="Redis的Java客户端"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-23 20:31" pubdate>
+          2023年4月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          0 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          1 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
 
         
       </div>
@@ -223,297 +283,224 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Redis的Java客户端</h1>
+            
+            
+              <div class="markdown-body">
                 
+                
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
 
-
-
-
-
-<div class="category-list">
+<span class="category-chains">
   
   
     
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="中间件"
-        id="heading-3cbfec336978067fe5295fb69a0ca202" role="tab" data-toggle="collapse" href="#collapse-3cbfec336978067fe5295fb69a0ca202"
-        aria-expanded="false"
-      >
-        中间件
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>3</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-3cbfec336978067fe5295fb69a0ca202"
-           role="tabpanel" aria-labelledby="heading-3cbfec336978067fe5295fb69a0ca202">
+      <span class="category-chain">
         
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
+  <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-chain-item">中间件</a>
   
+  
+    <span>></span>
     
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Redis"
-        id="heading-e111446745a1825b862f8727ae63bce4" role="tab" data-toggle="collapse" href="#collapse-e111446745a1825b862f8727ae63bce4"
-        aria-expanded="false"
-      >
-        Redis
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>3</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-e111446745a1825b862f8727ae63bce4"
-           role="tabpanel" aria-labelledby="heading-e111446745a1825b862f8727ae63bce4">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/04/23/Redis%E7%9A%84Java%E5%AE%A2%E6%88%B7%E7%AB%AF/" title="Redis的Java客户端"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Redis的Java客户端</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/23/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Redis常用命令"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Redis常用命令</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/23/%E5%88%9D%E8%AF%86Redis/" title="初识Redis"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">初识Redis</span>
-        </a>
-      
-    
-  </div>
+  <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/" class="category-chain-item">Redis</a>
+  
+  
 
-        
-      </div>
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
   
-        
-      </div>
-    </div>
   
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="我的博客"
-        id="heading-603b9a804374837c29a73c81a16ce28f" role="tab" data-toggle="collapse" href="#collapse-603b9a804374837c29a73c81a16ce28f"
-        aria-expanded="false"
-      >
-        我的博客
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-        <a href="/categories/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>2</span>
-        </a>
+        <a href="/tags/Nosql/">#Nosql</a>
       
-      <div class="category-collapse collapse " id="collapse-603b9a804374837c29a73c81a16ce28f"
-           role="tabpanel" aria-labelledby="heading-603b9a804374837c29a73c81a16ce28f">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
+        <a href="/tags/Redis/">#Redis</a>
       
-      
-        <a href="/2023/04/23/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/" title="博客文章操作"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">博客文章操作</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/21/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="第一篇博客"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第一篇博客</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Java"
-        id="heading-d52387880e1ea22817a72d3759213819" role="tab" data-toggle="collapse" href="#collapse-d52387880e1ea22817a72d3759213819"
-        aria-expanded="false"
-      >
-        Java
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/Java/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-d52387880e1ea22817a72d3759213819"
-           role="tabpanel" aria-labelledby="heading-d52387880e1ea22817a72d3759213819">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/04/22/Idea%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Idea中的快捷键"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Idea中的快捷键</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="项目"
-        id="heading-31ecc0e65b4cd3e6b12577382bb56d6a" role="tab" data-toggle="collapse" href="#collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-        aria-expanded="false"
-      >
-        项目
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-31ecc0e65b4cd3e6b12577382bb56d6a"
-           role="tabpanel" aria-labelledby="heading-31ecc0e65b4cd3e6b12577382bb56d6a">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="电脑商城"
-        id="heading-0b6ceb3f9fc02840b0c4de3e1ec129fe" role="tab" data-toggle="collapse" href="#collapse-0b6ceb3f9fc02840b0c4de3e1ec129fe"
-        aria-expanded="false"
-      >
-        电脑商城
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E9%A1%B9%E7%9B%AE/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-0b6ceb3f9fc02840b0c4de3e1ec129fe"
-           role="tabpanel" aria-labelledby="heading-0b6ceb3f9fc02840b0c4de3e1ec129fe">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/04/23/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E01/" title="电脑商城01"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">电脑商城01</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-        
-      </div>
     </div>
   
 </div>
 
 
-              </div>
-            </div>
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Redis的Java客户端</div>
+      <div>http://example.com/2023/04/23/Redis的Java客户端/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>mao-6083</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/23/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Redis常用命令">
+                        <span class="hidden-mobile">Redis常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","appKey":"hq1Ly0PaMiEZki7tleyXTlPd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -632,6 +619,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script defer src="/js/leancloud.js" ></script>
 

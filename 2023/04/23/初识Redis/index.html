@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/p1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="mao-6083">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.初识RedisRedis是一种键值型的NoSql数据库，这里有两个关键字：  键值型  NoSql   其中键值型，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json：  而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。 1.1.认识NoSQLNoSql可以翻译做Not Only Sql（不仅仅是SQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Redis">
+<meta property="og:url" content="http://example.com/2023/04/23/%E5%88%9D%E8%AF%86Redis/index.html">
+<meta property="og:site_name" content="画画的baby">
+<meta property="og:description" content="1.初识RedisRedis是一种键值型的NoSql数据库，这里有两个关键字：  键值型  NoSql   其中键值型，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json：  而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。 1.1.认识NoSQLNoSql可以翻译做Not Only Sql（不仅仅是SQ">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p2.jpg">
+<meta property="article:published_time" content="2023-04-23T11:39:19.000Z">
+<meta property="article:modified_time" content="2023-04-23T12:13:35.496Z">
+<meta property="article:author" content="mao-6083">
+<meta property="article:tag" content="Nosql">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/p2.jpg">
+  
+  
+  
+  <title>初识Redis - 画画的baby</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","app_key":"hq1Ly0PaMiEZki7tleyXTlPd","server_url":"https://wdlcfe27.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MZX的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/p3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="初识Redis"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-23 19:39" pubdate>
+          2023年4月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">初识Redis</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-初识Redis"><a href="#1-初识Redis" class="headerlink" title="1.初识Redis"></a>1.初识Redis</h1><p>Redis是一种键值型的NoSql数据库，这里有两个关键字：</p>
+<ul>
+<li><p>键值型</p>
+</li>
+<li><p>NoSql</p>
+</li>
+</ul>
+<p>其中<strong>键值型</strong>，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json：</p>
+<p><img src="p1.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。</p>
+<h2 id="1-1-认识NoSQL"><a href="#1-1-认识NoSQL" class="headerlink" title="1.1.认识NoSQL"></a>1.1.认识NoSQL</h2><p><strong>NoSql</strong>可以翻译做Not Only Sql（不仅仅是SQL），或者是No Sql（非Sql的）数据库。是相对于传统关系型数据库而言，有很大差异的一种特殊的数据库，因此也称之为<strong>非关系型数据库</strong>。</p>
+<h3 id="1-1-1-结构化与非结构化"><a href="#1-1-1-结构化与非结构化" class="headerlink" title="1.1.1.结构化与非结构化"></a>1.1.1.结构化与非结构化</h3><p>传统关系型数据库是结构化数据，每一张表都有严格的约束信息：字段名、字段数据类型、字段约束等等信息，插入的数据必须遵守这些约束：</p>
+<p><img src="p2.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>而NoSql则对数据库格式没有严格约束，往往形式松散，自由。</p>
+<p>可以是键值型：</p>
+<p><img src="p3.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>也可以是文档型：</p>
+<p><img src="p4.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>甚至可以是图格式：</p>
+<p><img src="p5.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<h3 id="1-1-2-关联和非关联"><a href="#1-1-2-关联和非关联" class="headerlink" title="1.1.2.关联和非关联"></a>1.1.2.关联和非关联</h3><p>传统数据库的表与表之间往往存在关联，例如外键：</p>
+<p><img src="p6.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>而非关系型数据库不存在关联关系，要维护关系要么靠代码中的业务逻辑，要么靠数据之间的耦合：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  id<span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>  name<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;张三&quot;</span><span class="hljs-punctuation">,</span><br>  orders<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>       id<span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>       item<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>	 id<span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span> title<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;荣耀6&quot;</span><span class="hljs-punctuation">,</span> price<span class="hljs-punctuation">:</span> <span class="hljs-number">4999</span><br>       <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>       id<span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>       item<span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>	 id<span class="hljs-punctuation">:</span> <span class="hljs-number">20</span><span class="hljs-punctuation">,</span> title<span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;小米11&quot;</span><span class="hljs-punctuation">,</span> price<span class="hljs-punctuation">:</span> <span class="hljs-number">3999</span><br>       <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>此处要维护“张三”的订单与商品“荣耀”和“小米11”的关系，不得不冗余的将这两个商品保存在张三的订单文档中，不够优雅。还是建议用业务来维护关联关系。</p>
+<h3 id="1-1-3-查询方式"><a href="#1-1-3-查询方式" class="headerlink" title="1.1.3.查询方式"></a>1.1.3.查询方式</h3><p>传统关系型数据库会基于Sql语句做查询，语法有统一标准；</p>
+<p>而不同的非关系数据库查询语法差异极大，五花八门各种各样。</p>
+<p><img src="p7.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<h3 id="1-1-4-事务"><a href="#1-1-4-事务" class="headerlink" title="1.1.4.事务"></a>1.1.4.事务</h3><p>传统关系型数据库能满足事务ACID的原则。</p>
+<p><img src="p8.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>而非关系型数据库往往不支持事务，或者不能严格保证ACID的特性，只能实现基本的一致性。</p>
+<h3 id="1-1-5-总结"><a href="#1-1-5-总结" class="headerlink" title="1.1.5.总结"></a>1.1.5.总结</h3><p>除了上述四点以外，在存储方式、扩展性、查询性能上关系型与非关系型也都有着显著差异，总结如下：</p>
+<p><img src="p9.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<ul>
+<li>存储方式<ul>
+<li>关系型数据库基于磁盘进行存储，会有大量的磁盘IO，对性能有一定影响</li>
+<li>非关系型数据库，他们的操作更多的是依赖于内存来操作，内存的读写速度会非常快，性能自然会好一些</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>扩展性<ul>
+<li>关系型数据库集群模式一般是主从，主从数据一致，起到数据备份的作用，称为垂直扩展。</li>
+<li>非关系型数据库可以将数据拆分，存储在不同机器上，可以保存海量数据，解决内存大小有限的问题。称为水平扩展。</li>
+<li>关系型数据库因为表之间存在关联关系，如果做水平扩展会给数据查询带来很多麻烦</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-认识Redis"><a href="#1-2-认识Redis" class="headerlink" title="1.2.认识Redis"></a>1.2.认识Redis</h2><p>Redis诞生于2009年全称是<strong>Re</strong>mote  <strong>D</strong>ictionary <strong>S</strong>erver 远程词典服务器，是一个基于内存的键值型NoSQL数据库。</p>
+<p><strong>特征</strong>：</p>
+<ul>
+<li>键值（key-value）型，value支持多种不同数据结构，功能丰富</li>
+<li>单线程，每个命令具备原子性</li>
+<li>低延迟，速度快（基于内存、IO多路复用、良好的编码）。</li>
+<li>支持数据持久化</li>
+<li>支持主从集群、分片集群</li>
+<li>支持多语言客户端</li>
+</ul>
+<p><strong>作者</strong>：Antirez</p>
+<p>Redis的官方网站地址：<a target="_blank" rel="noopener" href="https://redis.io/">Redis</a></p>
+<h2 id="1-3-安装Redis"><a href="#1-3-安装Redis" class="headerlink" title="1.3.安装Redis"></a>1.3.安装Redis</h2><p>大多数企业都是基于Linux服务器来部署项目，而且Redis官方也没有提供Windows版本的安装包。因此我们会基于Linux系统来安装Redis.</p>
+<p>此处选择的Linux版本为CentOS 7.</p>
+<h3 id="1-3-1-依赖库"><a href="#1-3-1-依赖库" class="headerlink" title="1.3.1.依赖库"></a>1.3.1.依赖库</h3><p>Redis是基于C语言编写的，因此首先需要安装Redis所需要的gcc依赖：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">yum install -y gcc tcl<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-2-上传安装包并解压"><a href="#1-3-2-上传安装包并解压" class="headerlink" title="1.3.2.上传安装包并解压"></a>1.3.2.上传安装包并解压</h3><p>然后将Redis安装包上传到虚拟机的任意目录：</p>
+<p><img src="p10.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>例如，我放到了/usr/local/src 目录：</p>
+<p><img src="p11.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>解压缩：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">tar -xzf redis-6.2.6.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>解压后：</p>
+<p><img src="p12.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>进入redis目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cd</span> redis-6.2.6<br></code></pre></td></tr></table></figure>
+
+<p>运行编译命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+
+<p>如果没有出错，应该就安装成功了。</p>
+<p>默认的安装路径是在 <code>/usr/local/bin</code>目录下：</p>
+<p><img src="p13.jpg" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>该目录已经默认配置到环境变量，因此可以在任意目录下运行这些命令。其中：</p>
+<ul>
+<li>redis-cli：是redis提供的命令行客户端</li>
+<li>redis-server：是redis的服务端启动脚本</li>
+<li>redis-sentinel：是redis的哨兵启动脚本</li>
+</ul>
+<h3 id="1-3-3-启动"><a href="#1-3-3-启动" class="headerlink" title="1.3.3.启动"></a>1.3.3.启动</h3><p>redis的启动方式有很多种，例如：</p>
+<ul>
+<li>默认启动</li>
+<li>指定配置启动</li>
+<li>开机自启</li>
+</ul>
+<h3 id="1-3-4-默认启动"><a href="#1-3-4-默认启动" class="headerlink" title="1.3.4.默认启动"></a>1.3.4.默认启动</h3><p>安装完成后，在任意目录输入redis-server命令即可启动Redis：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta">redis-<span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure>
+
+<p>如图：</p>
+<p><img src="p14.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>这种启动属于<code>前台启动</code>，会阻塞整个会话窗口，窗口关闭或者按下<code>CTRL + C</code>则Redis停止。不推荐使用。</p>
+<h3 id="1-3-5-指定配置启动"><a href="#1-3-5-指定配置启动" class="headerlink" title="1.3.5.指定配置启动"></a>1.3.5.指定配置启动</h3><p>如果要让Redis以<code>后台</code>方式启动，则必须修改Redis配置文件，就在我们之前解压的redis安装包下（<code>/usr/local/src/redis-6.2.6</code>），名字叫redis.conf：</p>
+<p><img src="p15.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>我们先将这个配置文件备份一份：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">cp</span> redis.<span class="hljs-keyword">conf</span> redis.<span class="hljs-keyword">conf</span>.bck<br></code></pre></td></tr></table></figure>
+
+<p>然后修改redis.conf文件中的一些配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 允许访问的地址，默认是127.0.0.1，会导致只能在本地访问。修改为0.0.0.0则可以在任意IP访问，生产环境不要设置为0.0.0.0</span><br><span class="hljs-attr">bind</span> <span class="hljs-string">0.0.0.0</span><br><span class="hljs-comment"># 守护进程，修改为yes后即可后台运行</span><br><span class="hljs-attr">daemonize</span> <span class="hljs-string">yes </span><br><span class="hljs-comment"># 密码，设置后访问Redis必须输入密码</span><br><span class="hljs-attr">requirepass</span> <span class="hljs-string">123321</span><br></code></pre></td></tr></table></figure>
+
+<p>Redis的其它常见配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 监听的端口</span><br><span class="hljs-attr">port</span> <span class="hljs-string">6379</span><br><span class="hljs-comment"># 工作目录，默认是当前目录，也就是运行redis-server时的命令，日志、持久化等文件会保存在这个目录</span><br><span class="hljs-attr">dir</span> <span class="hljs-string">.</span><br><span class="hljs-comment"># 数据库数量，设置为1，代表只使用1个库，默认有16个库，编号0~15</span><br><span class="hljs-attr">databases</span> <span class="hljs-string">1</span><br><span class="hljs-comment"># 设置redis能够使用的最大内存</span><br><span class="hljs-attr">maxmemory</span> <span class="hljs-string">512mb</span><br><span class="hljs-comment"># 日志文件，默认为空，不记录日志，可以指定日志文件名</span><br><span class="hljs-attr">logfile</span> <span class="hljs-string">&quot;redis.log&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>启动Redis：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 进入redis安装目录 </span><br><span class="hljs-built_in">cd</span> /usr/local/src/redis-6.2.6<br><span class="hljs-comment"># 启动</span><br>redis-server redis.conf<br></code></pre></td></tr></table></figure>
+
+<p>停止服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 利用redis-cli来执行 shutdown 命令，即可停止 Redis 服务，</span><br><span class="hljs-comment"># 因为之前配置了密码，因此需要通过 -u 来指定密码</span><br>redis-cli -u 123321 shutdown<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-6-开机自启"><a href="#1-3-6-开机自启" class="headerlink" title="1.3.6.开机自启"></a>1.3.6.开机自启</h3><p>我们也可以通过配置来实现开机自启。</p>
+<p>首先，新建一个系统服务文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">vi /etc/systemd/system/redis.service<br></code></pre></td></tr></table></figure>
+
+<p>内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs conf">[Unit]<br>Description=redis-server<br>After=network.target<br><br>[Service]<br>Type=forking<br>ExecStart=/usr/local/bin/redis-server /usr/local/src/redis-6.2.6/redis.conf<br>PrivateTmp=true<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p>然后重载系统服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">systemctl daemon-reload<br></code></pre></td></tr></table></figure>
+
+<p>现在，我们可以用下面这组命令来操作redis了：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 启动</span><br>systemctl start redis<br><span class="hljs-comment"># 停止</span><br>systemctl stop redis<br><span class="hljs-comment"># 重启</span><br>systemctl restart redis<br><span class="hljs-comment"># 查看状态</span><br>systemctl status redis<br></code></pre></td></tr></table></figure>
+
+<p>执行下面的命令，可以让redis开机自启：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">systemctl <span class="hljs-built_in">enable</span> redis<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-4-Redis桌面客户端"><a href="#1-4-Redis桌面客户端" class="headerlink" title="1.4.Redis桌面客户端"></a>1.4.Redis桌面客户端</h2><p>安装完成Redis，我们就可以操作Redis，实现数据的CRUD了。这需要用到Redis客户端，包括：</p>
+<ul>
+<li>命令行客户端</li>
+<li>图形化桌面客户端</li>
+<li>编程客户端</li>
+</ul>
+<h3 id="1-4-1-Redis命令行客户端"><a href="#1-4-1-Redis命令行客户端" class="headerlink" title="1.4.1.Redis命令行客户端"></a>1.4.1.Redis命令行客户端</h3><p>Redis安装完成后就自带了命令行客户端：redis-cli，使用方式如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">redis-cli [options] [commonds]<br></code></pre></td></tr></table></figure>
+
+<p>其中常见的options有：</p>
+<ul>
+<li><code>-h 127.0.0.1</code>：指定要连接的redis节点的IP地址，默认是127.0.0.1</li>
+<li><code>-p 6379</code>：指定要连接的redis节点的端口，默认是6379</li>
+<li><code>-a 123321</code>：指定redis的访问密码 </li>
+</ul>
+<p>其中的commonds就是Redis的操作命令，例如：</p>
+<ul>
+<li><code>ping</code>：与redis服务端做心跳测试，服务端正常会返回<code>pong</code></li>
+</ul>
+<p>不指定commond时，会进入<code>redis-cli</code>的交互控制台：</p>
+<p><img src="p16.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<h3 id="1-4-2-图形化桌面客户端"><a href="#1-4-2-图形化桌面客户端" class="headerlink" title="1.4.2.图形化桌面客户端"></a>1.4.2.图形化桌面客户端</h3><p>GitHub上的大神编写了Redis的图形化桌面客户端，地址：<a target="_blank" rel="noopener" href="https://github.com/uglide/RedisDesktopManager">https://github.com/uglide/RedisDesktopManager</a></p>
+<p>不过该仓库提供的是RedisDesktopManager的源码，并未提供windows安装包。</p>
+<p>在下面这个仓库可以找到安装包：<a target="_blank" rel="noopener" href="https://github.com/lework/RedisDesktopManager-Windows/releases">https://github.com/lework/RedisDesktopManager-Windows/releases</a></p>
+<h3 id="1-4-3-安装"><a href="#1-4-3-安装" class="headerlink" title="1.4.3.安装"></a>1.4.3.安装</h3><p>在课前资料中可以找到Redis的图形化桌面客户端：</p>
+<p><img src="p17.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>解压缩后，运行安装程序即可安装：</p>
+<p><img src="p18.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>安装完成后，在安装目录下找到rdm.exe文件：</p>
+<p><img src="p19.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>双击即可运行：</p>
+<p><img src="p20.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<h3 id="1-4-4-建立连接"><a href="#1-4-4-建立连接" class="headerlink" title="1.4.4.建立连接"></a>1.4.4.建立连接</h3><p>点击左上角的<code>连接到Redis服务器</code>按钮：</p>
+<p><img src="p21.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>在弹出的窗口中填写Redis服务信息：</p>
+<p><img src="p22.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>点击确定后，在左侧菜单会出现这个链接：</p>
+<p><img src="p23.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>点击即可建立连接了。</p>
+<p><img src="p24.png" srcset="/img/loading.gif" lazyload alt="初识Redis"></p>
+<p>Redis默认有16个仓库，编号从0至15.  通过配置文件可以设置仓库数量，但是不超过16，并且不能自定义仓库名称。</p>
+<p>如果是基于redis-cli连接Redis服务，可以通过select命令来选择数据库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 选择 0号库</span><br>select 0<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="category-chain-item">中间件</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/" class="category-chain-item">Redis</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nosql/">#Nosql</a>
+      
+        <a href="/tags/Redis/">#Redis</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>初识Redis</div>
+      <div>http://example.com/2023/04/23/初识Redis/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>mao-6083</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/23/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Redis常用命令">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Redis常用命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/23/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E01/" title="电脑商城01">
+                        <span class="hidden-mobile">电脑商城01</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","appKey":"hq1Ly0PaMiEZki7tleyXTlPd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
