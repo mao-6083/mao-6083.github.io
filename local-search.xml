@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>电脑商城01</title>
+    <link href="/2023/04/23/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E01/"/>
+    <url>/2023/04/23/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E01/</url>
+    
+    <content type="html"><![CDATA[<h3 id="项目环境搭建"><a href="#项目环境搭建" class="headerlink" title="项目环境搭建"></a>项目环境搭建</h3><h4 id="1-项目分析"><a href="#1-项目分析" class="headerlink" title="1.项目分析"></a>1.项目分析</h4><p>项目功能:登录,注册,热销商品,用户管理(密码,个人信息,头像,收货地址),购物车(展示,增加,删除),订单模块</p><p>开发顺序:注册,登录,用户管理,购物车,商品,订单模块</p><p>某一个模块的开发顺序:</p><p>持久层开发:依据前端页面的设置规划相关的SQL语句,以及进行配置</p><p>业务层开发:核心功能控制,业务操作以及异常的处理</p><p>控制层开发:接收请求,处理响应</p><p>前端开发:JS,Query,AJAX这些技术来连接后台</p><h4 id="2-项目基本环境"><a href="#2-项目基本环境" class="headerlink" title="2.项目基本环境"></a>2.项目基本环境</h4><p>JDK:1.8版本及以上<br>maven:需要配置到idea,3.6.1版本及以上<br>数据库:MySQL,要求是5.1版本及以上<br>开发的平台:Idea</p><p>项目名称:store,表示商城<br>结构:com.cy.store<br>资源文件:resources文件夹下(static,templates)<br>单元测试:test.com.cy.store</p><h4 id="3-项目创建"><a href="#3-项目创建" class="headerlink" title="3.项目创建"></a>3.项目创建</h4><p>1.Create New Project-&gt;</p><p>2.选择Spring Initializr,点击next</p><p>3.跳转到Project Metadata页面,该页面的Group填写域com和自己起的域名cy(即com.cy)==;Artifact填写项目名store;==Java Version版本选择自己安装的版本,点击next</p><p>4.选择需要导入的jar包:<br>    前后端的连接jar包:Web目录下的Spring web<br>    mybatis的jar包:SQL目录下的Mybatis Framework<br>    mysql数据库的驱动:SQL目录下的MySQL Driver</p><p>5.创建一个数据库</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> database store <span class="hljs-type">character</span> <span class="hljs-keyword">set</span> utf8;<br></code></pre></td></tr></table></figure><p>6.在application.properties文件中配置数据库的连接源信息</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">spring.datasource.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/store?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/shanghai</span><br><span class="hljs-attr">spring.datasource.username</span>=<span class="hljs-string">root</span><br><span class="hljs-attr">spring.datasource.password</span>=<span class="hljs-string">123456</span><br></code></pre></td></tr></table></figure><h4 id="4-项目测试"><a href="#4-项目测试" class="headerlink" title="4.项目测试"></a>4.项目测试</h4><h5 id="4-1测试能否成功连接数据库"><a href="#4-1测试能否成功连接数据库" class="headerlink" title="4.1测试能否成功连接数据库"></a>4.1测试能否成功连接数据库</h5><p>启动Springboot主类,看idea中是否有对应的spring图形输出</p><p>若idea有对应的spring图形输出开始第二步测试:在单元测试中测试数据库的连接是否可以加载:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">StoreApplicationTests</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span> <span class="hljs-comment">//自动装配</span><br>    <span class="hljs-keyword">private</span> DataSource dataSource;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">contextLoads</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">getConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException &#123;<br>        System.out.println(dataSource.getConnection());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>运行getConnection方法,若成功返回HikariProxyConnection@189194499 wrapping com.mysql.cj.jdbc.ConnectionImpl@2b0e9f30则说明成功连接数据库,其中Hikari是一个连接池,用来管理数据库的连接对象,是springboot默认内部整合的连接池,该连接池号称世界上最快的连接池,底层仍然采用c3p0来管理数据库的连接对象。</p><h5 id="4-2测试静态资源能否正常加载"><a href="#4-2测试静态资源能否正常加载" class="headerlink" title="4.2测试静态资源能否正常加载"></a>4.2测试静态资源能否正常加载</h5><p>将静态资源(SpringBoot电脑商城项目-V1.0\tools\pages_src\pages*)复制到static目录下重启项目并尝试访问localhost:8080/web/login.html(因为static是默认根目录,所以不是localhost:8080/static/web/login.html)</p><p>如果这个过程访问失败,原因是idea对于JS代码的兼容性较差,编写了js代码但是有的时候不能正常去加载,解决办法有以下四种:</p><p>1.clear-install:依次点击MavenProject-&gt;store-&gt;Lifecycle-&gt;clean,等待清哩项目完毕后点击同目录下的install重新部署</p><p>2.idea缓存清理:点击File下的Invalidate Caches/Restart…然后在弹出的窗口中选择Invalidate and Restart,此时就会自动清除缓存并重新启动idea</p><p>3.rebuild重新构建:点击工具栏的Build下的Rebuild Project</p><p>4.重启电脑</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目</category>
+      
+      <category>电脑商城</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SSM</tag>
+      
+      <tag>项目练习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>博客文章操作</title>
     <link href="/2023/04/23/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/"/>
     <url>/2023/04/23/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/</url>
