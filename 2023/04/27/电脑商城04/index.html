@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/p1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="mao-6083">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="修改密码初步分析：需要用户提交原始密码和新密码，再根据当前登录的用户进行信息的修改操作. 1.修改密码-持久层1.1规划需要执行的SQL语句 根据用户的uid修改用户password值  1update t_user set password&#x3D;?,modified_user&#x3D;?, modified_time&#x3D;? WHERE uid&#x3D;?  modified_user&#x3D;?, modified_time">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电脑商城04">
+<meta property="og:url" content="http://example.com/2023/04/27/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E04/index.html">
+<meta property="og:site_name" content="画画的baby">
+<meta property="og:description" content="修改密码初步分析：需要用户提交原始密码和新密码，再根据当前登录的用户进行信息的修改操作. 1.修改密码-持久层1.1规划需要执行的SQL语句 根据用户的uid修改用户password值  1update t_user set password&#x3D;?,modified_user&#x3D;?, modified_time&#x3D;? WHERE uid&#x3D;?  modified_user&#x3D;?, modified_time">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p3.jpg">
+<meta property="article:published_time" content="2023-04-27T11:19:35.000Z">
+<meta property="article:modified_time" content="2023-04-27T11:35:20.790Z">
+<meta property="article:author" content="mao-6083">
+<meta property="article:tag" content="SSM">
+<meta property="article:tag" content="项目练习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/p3.jpg">
+  
+  
+  
+  <title>电脑商城04 - 画画的baby</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","app_key":"hq1Ly0PaMiEZki7tleyXTlPd","server_url":"https://wdlcfe27.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MZX的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/p3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电脑商城04"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-27 19:19" pubdate>
+          2023年4月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          85 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电脑商城04</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h2><p>初步分析：需要用户提交原始密码和新密码，再根据当前登录的用户进行信息的修改操作.</p>
+<h3 id="1-修改密码-持久层"><a href="#1-修改密码-持久层" class="headerlink" title="1.修改密码-持久层"></a>1.修改密码-持久层</h3><h4 id="1-1规划需要执行的SQL语句"><a href="#1-1规划需要执行的SQL语句" class="headerlink" title="1.1规划需要执行的SQL语句"></a>1.1规划需要执行的SQL语句</h4><ul>
+<li>根据用户的uid修改用户password值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> t_user <span class="hljs-keyword">set</span> password<span class="hljs-operator">=</span>?,modified_user<span class="hljs-operator">=</span>?, modified_time<span class="hljs-operator">=</span>? <span class="hljs-keyword">WHERE</span> uid<span class="hljs-operator">=</span>?<br></code></pre></td></tr></table></figure>
+
+<p>modified_user=?, modified_time=?是为了跟踪用户数据的变动,如果这条数据被错误修改了可以找到第一责任人</p>
+<ul>
+<li>在执行修改密码之前，还应检查用户数据是否存在或者用户数据是否被标记为”已删除”(比如登录账号后的几分钟在和朋友聊天,没有看页面,管理员错误删除了你的账号或者错误设置is_delete为1)、并检查原密码是否正确，这些检查都可以通过查询用户数据来辅助完成：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_user <span class="hljs-keyword">WHERE</span> uid<span class="hljs-operator">=</span>?<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2设计接口和抽象方法"><a href="#1-2设计接口和抽象方法" class="headerlink" title="1.2设计接口和抽象方法"></a>1.2设计接口和抽象方法</h4><p>UserMapper接口,将以上的两个方法的抽象定义出来,将来映射到sql语句上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据用户的uid来修改用户密码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 用户的id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> password 用户输入的新密码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> modifiedUser 表示修改的执行者</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> modifiedTime 表示修改数据的时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 返回值为受影响的行数</span><br><span class="hljs-comment"> */</span><br>Integer <span class="hljs-title function_">updatePasswordByUid</span><span class="hljs-params">(Integer uid,</span><br><span class="hljs-params">                            String password,</span><br><span class="hljs-params">                            String modifiedUser,</span><br><span class="hljs-params">                            Date modifiedTime)</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据用户的id查询用户的数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 用户的id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果找到则返回对象,反之返回null值</span><br><span class="hljs-comment"> */</span><br>User <span class="hljs-title function_">findByUid</span><span class="hljs-params">(Integer uid)</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3编写映射"><a href="#1-3编写映射" class="headerlink" title="1.3编写映射"></a>1.3编写映射</h4><p>配置到映射文件UserMapper.xml中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updatePasswordByUid&quot;</span>&gt;</span><br>    update t_user set<br>      `password`=#&#123;password&#125;,<br>      modified_user=#&#123;modifiedUser&#125;,<br>      modified_time=#&#123;modifiedTime&#125;,<br>    where uid=#&#123;uid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByUid&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;UserEntityMap&quot;</span>&gt;</span><br>    select * from t_user where uid=#&#123;uid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-4单元测试"><a href="#1-4单元测试" class="headerlink" title="1.4单元测试"></a>1.4单元测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updatePasswordByUid</span><span class="hljs-params">()</span>&#123;<br>    userMapper.updatePasswordByUid(<br>        <span class="hljs-number">10</span>,<br>        <span class="hljs-string">&quot;321&quot;</span>,<br>        <span class="hljs-string">&quot;管理员&quot;</span>,<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findByUid</span><span class="hljs-params">()</span>&#123;<br>    System.out.println(userMapper.findByUid(<span class="hljs-number">10</span>));<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-修改密码-业务层"><a href="#2-修改密码-业务层" class="headerlink" title="2.修改密码-业务层"></a>2.修改密码-业务层</h3><h4 id="2-1规划异常"><a href="#2-1规划异常" class="headerlink" title="2.1规划异常"></a>2.1规划异常</h4><ul>
+<li>用户的原密码错误,抛PasswordNotMatchException异常(前面已创建)</li>
+<li>检测到is_delete字段为1和uid找不到都是抛出用户没有找到的异常,UsernameNotFoundException(前面已创建)</li>
+<li>update在更新的时候,有可能产生未知的异常,抛UpdateException异常</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**用户在更新数据时产生的未知异常*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UpdateException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceException</span>&#123;<br>    <span class="hljs-comment">/**重写ServiceException的所有构造方法*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2设计接口和抽象方法及实现"><a href="#2-2设计接口和抽象方法及实现" class="headerlink" title="2.2设计接口和抽象方法及实现"></a>2.2设计接口和抽象方法及实现</h4><p>1.执行用户修改密码的核心方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * changePassword方法需要什么参数:</span><br><span class="hljs-comment"> * 要先看底层持久层需要什么参数:uid,password,modifiedUser,modifiedTime</span><br><span class="hljs-comment"> * 1.修改人其实就是username,已经保存到session当中,通过控制层传递过来就行了</span><br><span class="hljs-comment"> * 2.在更新数据之前需要先根据uid查这个数据存不存在,uid也可以通过控制层传递</span><br><span class="hljs-comment"> * 3.新密码需要有</span><br><span class="hljs-comment"> * 4.修改时间不需要在参数列表,直接在方法内部new Date()就可以了</span><br><span class="hljs-comment"> * 5.旧密码</span><br><span class="hljs-comment"> * */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">changePassword</span><span class="hljs-params">(Integer uid,</span><br><span class="hljs-params">                   String username,</span><br><span class="hljs-params">                   String oldPassword,</span><br><span class="hljs-params">                   String newPassword)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>2.在实现类中实现当前的抽象方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changePassword</span><span class="hljs-params">(Integer uid,</span><br><span class="hljs-params">                          String username,</span><br><span class="hljs-params">                          String oldPassword,</span><br><span class="hljs-params">                          String newPassword)</span> &#123;<br>    <span class="hljs-type">User</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> userMapper.findByUid(uid);<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 用户没找到:比如登录账号后的几分钟在和朋友聊天,没</span><br><span class="hljs-comment">     * 有看页面,管理员错误删除了你的账号或者错误设置is_delete为1)</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">if</span> (result ==<span class="hljs-literal">null</span> || result.getIsDelete() == <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UsernameNotFoundException</span>(<span class="hljs-string">&quot;用户数据不存在&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//原始密码和数据库中密码进行比较</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">oldMd5Password</span> <span class="hljs-operator">=</span> getMD5Password(oldPassword,result.getSalt());<br>    <span class="hljs-keyword">if</span> (!result.getPassword().equals(oldMd5Password)) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PasswordNotMatchException</span>(<span class="hljs-string">&quot;密码错误&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//将新的密码加密后设置到数据库中(只要曾经注册过就用以前的盐值)</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">newMd5Password</span> <span class="hljs-operator">=</span> getMD5Password(newPassword, result.getSalt());<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> userMapper.updatePasswordByUid(uid, newMd5Password, username, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br><br>    <span class="hljs-keyword">if</span> (rows != <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateException</span>(<span class="hljs-string">&quot;更新数据产生未知的异常&quot;</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3单元测试"><a href="#2-3单元测试" class="headerlink" title="2.3单元测试"></a>2.3单元测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changePassword</span><span class="hljs-params">()</span> &#123;<br>    userService.changePassword(<span class="hljs-number">11</span>,<span class="hljs-string">&quot;管理员&quot;</span>,<span class="hljs-string">&quot;123&quot;</span>,<span class="hljs-string">&quot;321&quot;</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-修改密码-控制层"><a href="#3-修改密码-控制层" class="headerlink" title="3.修改密码-控制层"></a>3.修改密码-控制层</h3><h4 id="3-1处理异常"><a href="#3-1处理异常" class="headerlink" title="3.1处理异常"></a>3.1处理异常</h4><p>UsernameNotFoundException异常和PasswordNotMatchException异常在前面的章节中已经处理过,现在只需要把UpdateException异常配置到统一的异常处理方法中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> UpdateException) &#123;<br>            result.setState(<span class="hljs-number">5001</span>);<br>            result.setMessage(<span class="hljs-string">&quot;更新数据时产生未知的异常&quot;</span>);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="3-2设计请求"><a href="#3-2设计请求" class="headerlink" title="3.2设计请求"></a>3.2设计请求</h5><ul>
+<li>/users/change_password</li>
+<li>post</li>
+<li>String oldPassword,String newPassword,HttpSession session(uid和username可以通过session获取到,在处理方法的内部获取就可以了)//如果参数名用的是非pojo类型,就需要和表单中的name属性值保持一致</li>
+<li>JsonResult<void></li>
+</ul>
+<h5 id="3-3处理请求"><a href="#3-3处理请求" class="headerlink" title="3.3处理请求"></a>3.3处理请求</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;change_password&quot;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;Void&gt; <span class="hljs-title function_">changePassword</span><span class="hljs-params">(String oldPassword,</span><br><span class="hljs-params">                                       String newPassword,</span><br><span class="hljs-params">                                       HttpSession session)</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> getUsernameFromSession(session);<br>    userService.changePassword(uid,username,oldPassword,newPassword);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;&gt;(OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>启动服务,先登录账号然后在地址栏输入<a target="_blank" rel="noopener" href="http://localhost:8080/users/change_password?oldPassword=321&amp;newPassword=123%E7%9C%8B%E7%9C%8B%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F">http://localhost:8080/users/change_password?oldPassword=321&amp;newPassword=123看看是否成功</a></p>
+<h3 id="4-修改密码-前端页面"><a href="#4-修改密码-前端页面" class="headerlink" title="4.修改密码-前端页面"></a>4.修改密码-前端页面</h3><p>在password.html中添加ajax请求的处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;<br>    $(<span class="hljs-string">&quot;#btn-change-password&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        $.<span class="hljs-title function_">ajax</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/users/change_password&quot;</span>,<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>            <span class="hljs-attr">data</span>: $(<span class="hljs-string">&quot;#form-change-password&quot;</span>).<span class="hljs-title function_">serialize</span>(),<br>            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">json</span>) &#123;<br>                <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;密码修改成功&quot;</span>)<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;密码修改失败&quot;</span>)<br>                &#125;<br>            &#125;,<br>            <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) &#123;<br>                <span class="hljs-comment">//xhr.message可以获取未知异常的信息</span><br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;修改密码时产生未知的异常!&quot;</span>+xhr.<span class="hljs-property">message</span>);<br>            &#125;<br>        &#125;);<br>    &#125;);<br>&lt;/script&gt;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="个人资料"><a href="#个人资料" class="headerlink" title="个人资料"></a>个人资料</h2><p>其中用户名是不可修改的并且是在进个人资料页面时就从session获取值并将值加入到控件中</p>
+<h3 id="1-个人资料-持久层"><a href="#1-个人资料-持久层" class="headerlink" title="1.个人资料-持久层"></a>1.个人资料-持久层</h3><h4 id="1-1规划SQL语句"><a href="#1-1规划SQL语句" class="headerlink" title="1.1规划SQL语句"></a>1.1规划SQL语句</h4><ul>
+<li>获取用户信息的SQL语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> t_user <span class="hljs-keyword">set</span> python<span class="hljs-operator">=</span>?,email<span class="hljs-operator">=</span>?,gender<span class="hljs-operator">=</span>?,modified_user<span class="hljs-operator">=</span>?,modified_time<span class="hljs-operator">=</span>? <span class="hljs-keyword">where</span> uid<span class="hljs-operator">=</span>?<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>根据uid查询用户数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> t_user <span class="hljs-keyword">where</span> uid<span class="hljs-operator">=</span>?<br></code></pre></td></tr></table></figure>
+
+<p>根据uid查询用户数据不需要再重复开发</p>
+<h4 id="1-2设计接口和抽象方法-1"><a href="#1-2设计接口和抽象方法-1" class="headerlink" title="1.2设计接口和抽象方法"></a>1.2设计接口和抽象方法</h4><p>更新用户的信息方法的定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 参数为user的方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> user 用户的数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 返回值为受影响的行数</span><br><span class="hljs-comment"> */</span><br>Integer <span class="hljs-title function_">updateInfoByUid</span><span class="hljs-params">(User user)</span>;<span class="hljs-comment">//也可以用三个String的形参接收电话,邮箱,性别,但不如直接写个user省事</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3编写映射-1"><a href="#1-3编写映射-1" class="headerlink" title="1.3编写映射"></a>1.3编写映射</h4><p>在UserMapper.xml文件中进行映射编写</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateInfoByUid&quot;</span>&gt;</span><br>    update t_user<br>    set<br>        <span class="hljs-comment">&lt;!--if是条件判断标签,属性test接受的是一个返回值为boolean类型的条件,</span><br><span class="hljs-comment">        如果test条件的结果为true则执行if标签内部的语句,注意逗号也要在标签内--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;phone!=null&quot;</span>&gt;</span>phone = #&#123;phone&#125;,<span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;email!=null&quot;</span>&gt;</span>email = #&#123;email&#125;,<span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;gender!=null&quot;</span>&gt;</span>gender = #&#123;gender&#125;,<span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>        modified_user = #&#123;modifiedUser&#125;,<br>        modified_time = #&#123;modifiedTime&#125;<br>    where uid=#&#123;uid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-4单元测试-1"><a href="#1-4单元测试-1" class="headerlink" title="1.4单元测试"></a>1.4单元测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateInfoByUid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br>    user.setUid(<span class="hljs-number">11</span>);<br>    user.setPhone(<span class="hljs-string">&quot;13333688&quot;</span>);<br>    user.setEmail(<span class="hljs-string">&quot;1454@qq.com&quot;</span>);<br>    user.setGender(<span class="hljs-number">1</span>);<br>    userMapper.updateInfoByUid(user);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>2.个人资料-业务层</p>
+<p>设计两个功能:</p>
+<p>1.当打开页面时显示当前登录的用户的信息</p>
+<p>2.点击修改按钮时更新用户的信息<br>2.1规划异常</p>
+<ul>
+<li>点击个人资料页面时可能找不到用户的数据</li>
+<li>点击修改按钮时可能找不到用户数据,也可能修改时出现未知错误</li>
+</ul>
+<p>2.2设计接口和抽象方法及实现</p>
+<p>1.业务层有两个功能模块,对应的是两个抽象方法的设计,并且这两个功能都涉及到用户是否存在的查询操作,所以需要在业务层设计根据用户uid查询数据的方法(持久层已经设计过该方法,但是没有在业务层实现该方法的调用)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据用户的uid查询用户数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 用户uid</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 用户数据</span><br><span class="hljs-comment"> */</span><br>User <span class="hljs-title function_">getByUid</span><span class="hljs-params">(Integer uid)</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * uid通过控制层在session中获取然后传递给业务层,并在业务层封装到User对象中</span><br><span class="hljs-comment"> * */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">changeInfo</span><span class="hljs-params">(Integer uid,User user)</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>2.在实现类中实现当前的抽象方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> User <span class="hljs-title function_">getByUid</span><span class="hljs-params">(Integer uid)</span> &#123;<br>    <span class="hljs-comment">//查询用户是否存在</span><br>    <span class="hljs-type">User</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> userMapper.findByUid(uid);<br>    <span class="hljs-keyword">if</span> (result == <span class="hljs-literal">null</span> || result.getIsDelete() == <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UsernameNotFoundException</span>(<span class="hljs-string">&quot;用户数据不存在&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//可以直接返回result给控制层,但是太臃肿了</span><br>    <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br>    user.setUsername(result.getUsername());<br>    user.setPhone(result.getPhone());<br>    user.setEmail(result.getEmail());<br>    user.setGender(result.getGender());<br><br>    <span class="hljs-keyword">return</span> user;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *User对象中的数据只有phone,email,gender,username,因为springboot进行依赖</span><br><span class="hljs-comment"> * 注入的时候只注入表单中数据的值,所以需要手动将uid封装到user中</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeInfo</span><span class="hljs-params">(Integer uid, User user)</span> &#123;<br>    <span class="hljs-type">User</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> userMapper.findByUid(uid);<br>    <span class="hljs-keyword">if</span> (result == <span class="hljs-literal">null</span> || result.getIsDelete() == <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UsernameNotFoundException</span>(<span class="hljs-string">&quot;用户数据不存在&quot;</span>);<br>    &#125;<br>    user.setUid(uid);<br>    user.setModifiedUser(user.getUsername());<br>    user.setModifiedTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> userMapper.updateInfoByUid(user);<br>    <span class="hljs-keyword">if</span> (rows!=<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateException</span>(<span class="hljs-string">&quot;更新数据时产生异常&quot;</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3单元测试-1"><a href="#2-3单元测试-1" class="headerlink" title="2.3单元测试"></a>2.3单元测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getByUid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//err是为了让输出信息为红色</span><br>    System.err.println(userService.getByUid(<span class="hljs-number">11</span>).getUsername());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeInfo</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br>    <span class="hljs-comment">//这四个属性值在真实开发中都是在控制层就已经自动封装在User对象中了</span><br>    <span class="hljs-comment">//而uid需要由控制层传给业务层并在业务层封装到user中</span><br>    user.setPhone(<span class="hljs-string">&quot;123456789&quot;</span>);<br>    user.setEmail(<span class="hljs-string">&quot;123@qq.com&quot;</span>);<br>    user.setUsername(<span class="hljs-string">&quot;mxy&quot;</span>);<br>    user.setGender(<span class="hljs-number">0</span>);<br>    userService.changeInfo(<span class="hljs-number">11</span>,user);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>3.个人资料-控制层<br>3.1处理异常</p>
+<p>没有新的异常,所以这里不需要有操作<br>3.2设计请求</p>
+<p>1.设计一打开页面就发送当前用户数据的查询</p>
+<ul>
+<li>/users/get_by_uid</li>
+<li>GET</li>
+<li>HttpSession session(用于获取uid)</li>
+<li>JsonResult<User></li>
+</ul>
+<p>2.点击修改按钮发送用户的数据修改操作</p>
+<ul>
+<li>users/change_info</li>
+<li>POST</li>
+<li>User user,HttpSession session(用于获取uid)</li>
+<li>JsonResult<Void></li>
+</ul>
+<p>3.3处理请求</p>
+<p>1.一打开页面就发送当前用户数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;get_by_uid&quot;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;User&gt; <span class="hljs-title function_">getByUid</span><span class="hljs-params">(HttpSession session)</span> &#123;<br>    <span class="hljs-type">User</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> userService.getByUid(getUidFromSession(session));<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;User&gt;(OK,data);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>启动服务,先登录账号然后在地址栏输入<a target="_blank" rel="noopener" href="http://localhost:8080/users/get_by_uid%E7%9C%8B%E7%9C%8B%E7%8A%B6%E6%80%81%E7%A0%81%E6%98%AF%E5%90%A6%E4%B8%BA200%E5%B9%B6%E4%B8%94%E7%9C%8Bdata%E5%80%BC%E6%98%AF%E5%90%A6%E4%B8%8D%E4%B8%BAnull">http://localhost:8080/users/get_by_uid看看状态码是否为200并且看data值是否不为null</a></p>
+<p>2.点击修改按钮更改用户数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;change_info&quot;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;Void&gt; <span class="hljs-title function_">changeInfo</span><span class="hljs-params">(User user,HttpSession session)</span> &#123;<br>    <span class="hljs-comment">//user对象中有四部分的数据:username,phone,email,gender</span><br>    <span class="hljs-comment">//控制层给业务层传递uid,并在业务层通过user.setUid(uid);将uid封装到user中</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>    userService.changeInfo(uid,user);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;&gt;(OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>启动服务,先登录账号然后在地址栏输入<a target="_blank" rel="noopener" href="http://localhost:8080/users/change_info?phone=175726&amp;email=6695@qq.com&amp;username=%E5%BC%A09&amp;gender=1%E8%A7%82%E5%AF%9F%E7%8A%B6%E6%80%81%E7%A0%81%E6%98%AF%E5%90%A6%E4%B8%BA200">http://localhost:8080/users/change_info?phone=175726&amp;email=6695@qq.com&amp;username=张9&amp;gender=1观察状态码是否为200</a><br>4.个人资料-前端页面</p>
+<p>1.在打开userdata.html(个人资料)页面自动发送ajax请求(get_by_uid),查询到的数据填充到这个页面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 一旦检测到当前的页面被加载就会触发ready方法</span><br><span class="hljs-comment">     * $(document).ready(function()&#123;</span><br><span class="hljs-comment">     *     //编写业务代码</span><br><span class="hljs-comment">     * &#125;);</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-comment">//点击&quot;个人资料&quot;四个字加载userdata.html页面时$(document).ready(function()&#123;&#125;);就会起作用发送ajax请求</span><br>    $(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        $.<span class="hljs-title function_">ajax</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/users/get_by_uid&quot;</span>,<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;GET&quot;</span>,<br>            <span class="hljs-comment">//data为null也可以,因为这里get是从数据库拉取数据,不需要data</span><br>            <span class="hljs-attr">data</span>: $(<span class="hljs-string">&quot;#form-change-info&quot;</span>).<span class="hljs-title function_">serialize</span>(),<br>            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">json</span>) &#123;<br>                <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-comment">//将查询到的数据设置到控件中</span><br>                    $(<span class="hljs-string">&quot;#username&quot;</span>).<span class="hljs-title function_">val</span>(json.<span class="hljs-property">data</span>.<span class="hljs-property">username</span>);<br>                    $(<span class="hljs-string">&quot;#phone&quot;</span>).<span class="hljs-title function_">val</span>(json.<span class="hljs-property">data</span>.<span class="hljs-property">phone</span>);<br>                    $(<span class="hljs-string">&quot;#email&quot;</span>).<span class="hljs-title function_">val</span>(json.<span class="hljs-property">data</span>.<span class="hljs-property">email</span>);<br>                    <span class="hljs-keyword">var</span> radio = json.<span class="hljs-property">data</span>.<span class="hljs-property">gender</span> == <span class="hljs-number">0</span> ?<br>                        $(<span class="hljs-string">&quot;#gender-female&quot;</span>) : $(<span class="hljs-string">&quot;#gender-male&quot;</span>);<br>                    <span class="hljs-comment">//prop()表示给某个元素添加属性及属性的值</span><br>                    radio.<span class="hljs-title function_">prop</span>(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-string">&quot;checked&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;用户的数据不存在&quot;</span>)<br>                &#125;<br>            &#125;,<br>            <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) &#123;<br>                <span class="hljs-comment">//xhr.message可以获取未知异常的信息</span><br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;查询用户信息时产生未知的异常!&quot;</span>+xhr.<span class="hljs-property">message</span>);<br>            &#125;<br>        &#125;);<br>    &#125;);<br>&lt;/script&gt;<br><br></code></pre></td></tr></table></figure>
+
+<p>2.在检测到用户点击了修改按钮后发送一个ajax请求(change_info)</p>
+<p>该ajax函数需要和上一个ajax同级</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;#btn-change-info&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/users/change_info&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">data</span>: $(<span class="hljs-string">&quot;#form-change-info&quot;</span>).<span class="hljs-title function_">serialize</span>(),<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;用户信息修改成功&quot;</span>)<br>                <span class="hljs-comment">//修改成功后重新加载当前的页面</span><br>                location.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;userdata.html&quot;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;用户信息修改失败&quot;</span>)<br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">xhr</span>) &#123;<br>            <span class="hljs-comment">//xhr.message可以获取未知异常的信息</span><br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;用户信息修改时产生未知的异常!&quot;</span>+xhr.<span class="hljs-property">message</span>);<br>        &#125;<br>    &#125;);<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E/" class="category-chain-item">电脑商城</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SSM/">#SSM</a>
+      
+        <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/">#项目练习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电脑商城04</div>
+      <div>http://example.com/2023/04/27/电脑商城04/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>mao-6083</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/26/Redis%E7%BC%93%E5%AD%98/" title="Redis缓存">
+                        <span class="hidden-mobile">Redis缓存</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","appKey":"hq1Ly0PaMiEZki7tleyXTlPd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
