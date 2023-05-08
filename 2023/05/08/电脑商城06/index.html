@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/p1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="mao-6083">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="新增收货地址1 新增收货地址-创建数据表1.使用use命令先选中store数据库。 1USE store;  2.在store数据库中创建t_address用户数据表。 12345678910111213141516171819202122CREATE TABLE t_address (	aid INT AUTO_INCREMENT COMMENT &amp;#x27;收货地址id&amp;#x27;,	uid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电脑商城06">
+<meta property="og:url" content="http://example.com/2023/05/08/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E06/index.html">
+<meta property="og:site_name" content="画画的baby">
+<meta property="og:description" content="新增收货地址1 新增收货地址-创建数据表1.使用use命令先选中store数据库。 1USE store;  2.在store数据库中创建t_address用户数据表。 12345678910111213141516171819202122CREATE TABLE t_address (	aid INT AUTO_INCREMENT COMMENT &amp;#x27;收货地址id&amp;#x27;,	uid">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p3.jpg">
+<meta property="article:published_time" content="2023-05-08T11:27:37.000Z">
+<meta property="article:modified_time" content="2023-05-08T11:38:59.350Z">
+<meta property="article:author" content="mao-6083">
+<meta property="article:tag" content="SSM">
+<meta property="article:tag" content="项目练习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/p3.jpg">
+  
+  
+  
+  <title>电脑商城06 - 画画的baby</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","app_key":"hq1Ly0PaMiEZki7tleyXTlPd","server_url":"https://wdlcfe27.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MZX的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/p3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电脑商城06"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-08 19:27" pubdate>
+          2023年5月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          43k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          360 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电脑商城06</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="新增收货地址"><a href="#新增收货地址" class="headerlink" title="新增收货地址"></a>新增收货地址</h2><h3 id="1-新增收货地址-创建数据表"><a href="#1-新增收货地址-创建数据表" class="headerlink" title="1 新增收货地址-创建数据表"></a>1 新增收货地址-创建数据表</h3><p>1.使用use命令先选中store数据库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE store;<br></code></pre></td></tr></table></figure>
+
+<p>2.在store数据库中创建t_address用户数据表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE t_address (<br>	aid INT AUTO_INCREMENT COMMENT &#x27;收货地址id&#x27;,<br>	uid INT COMMENT &#x27;归属的用户id&#x27;,<br>	name VARCHAR(20) COMMENT &#x27;收货人姓名&#x27;,<br>	province_name VARCHAR(15) COMMENT &#x27;省-名称&#x27;,<br>	province_code CHAR(6) COMMENT &#x27;省-行政代号&#x27;,<br>	city_name VARCHAR(15) COMMENT &#x27;市-名称&#x27;,<br>	city_code CHAR(6) COMMENT &#x27;市-行政代号&#x27;,<br>	area_name VARCHAR(15) COMMENT &#x27;区-名称&#x27;,<br>	area_code CHAR(6) COMMENT &#x27;区-行政代号&#x27;,<br>	zip CHAR(6) COMMENT &#x27;邮政编码&#x27;,<br>	address VARCHAR(50) COMMENT &#x27;详细地址&#x27;,<br>	phone VARCHAR(20) COMMENT &#x27;手机&#x27;,<br>	tel VARCHAR(20) COMMENT &#x27;固话&#x27;,<br>	tag VARCHAR(6) COMMENT &#x27;标签&#x27;,<br>	is_default INT COMMENT &#x27;是否默认：0-不默认，1-默认&#x27;,<br>	created_user VARCHAR(20) COMMENT &#x27;创建人&#x27;,<br>	created_time DATETIME COMMENT &#x27;创建时间&#x27;,<br>	modified_user VARCHAR(20) COMMENT &#x27;修改人&#x27;,<br>	modified_time DATETIME COMMENT &#x27;修改时间&#x27;,<br>	PRIMARY KEY (aid)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-新增收货地址-创建实体类"><a href="#2-新增收货地址-创建实体类" class="headerlink" title="2 新增收货地址-创建实体类"></a>2 新增收货地址-创建实体类</h3><p>创建com.cy.store.entity.Address新增收获地址的实体类，继承自BaseEntity类，在类中声明与数据表中对应的属性，添加Getters and Setters方法，基于唯一标识aid生成hashCode()和equals()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.entity;<br><br><span class="hljs-comment">/** 收货地址数据的实体类 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Address</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseEntity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer aid;<br>    <span class="hljs-keyword">private</span> Integer uid;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> String provinceName;<br>    <span class="hljs-keyword">private</span> String provinceCode;<br>    <span class="hljs-keyword">private</span> String cityName;<br>    <span class="hljs-keyword">private</span> String cityCode;<br>    <span class="hljs-keyword">private</span> String areaName;<br>    <span class="hljs-keyword">private</span> String areaCode;<br>    <span class="hljs-keyword">private</span> String zip;<br>    <span class="hljs-keyword">private</span> String address;<br>    <span class="hljs-keyword">private</span> String phone;<br>    <span class="hljs-keyword">private</span> String tel;<br>    <span class="hljs-keyword">private</span> String tag;<br>    <span class="hljs-keyword">private</span> Integer isDefault;<br><br>    <span class="hljs-comment">// Generate: Getter and Setter、Generate hashCode() and equals()、toString()</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-新增收货地址-持久层"><a href="#3-新增收货地址-持久层" class="headerlink" title="3 新增收货地址-持久层"></a>3 新增收货地址-持久层</h3><h4 id="3-1-各功能的开发顺序"><a href="#3-1-各功能的开发顺序" class="headerlink" title="3.1 各功能的开发顺序"></a>3.1 各功能的开发顺序</h4><p>关于收货地址数据的管理，涉及的功能有：增加，删除，修改，设为默认，显示列表。这些功能的开发顺序为：增加-显示列表-设为默认-删除-修改。</p>
+<h4 id="3-2-规划需要执行的SQL语句"><a href="#3-2-规划需要执行的SQL语句" class="headerlink" title="3.2 规划需要执行的SQL语句"></a>3.2 规划需要执行的SQL语句</h4><p>增加收货地址的本质是插入新的收货地址数据，需要执行的SQL语句大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO t_address (除了aid以外的字段列表) VALUES (匹配的值列表)<br></code></pre></td></tr></table></figure>
+
+<p>后续在处理业务时，还需要确定“即将增加的收货地址是不是默认收货地址”；可以设定规则“用户的第1条收货地址是默认的，以后添加的每一条都不是默认的”；要应用该规则，就必须知道“即将增加的收货地址是不是第1条”，可以“根据用户id统计收货地址的数量”，如果统计结果为0，则即将增加的就是该用户的第1条收货地址，如果统计结果不是0，则该用户已经有若干条收货地址了，即将增加的就一定不是第1条。关于统计的SQL语句大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT count(*) FROM t_address WHERE uid=?<br></code></pre></td></tr></table></figure>
+
+<p>一般电商平台都会限制每个用户可以创建的收货地址的数量，如“每个用户最多只允许创建20个收货地址”，也可以通过以上查询来实现。</p>
+<h4 id="3-3-接口与抽象方法"><a href="#3-3-接口与抽象方法" class="headerlink" title="3.3 接口与抽象方法"></a>3.3 接口与抽象方法</h4><p>创建com.cy.store.mapper.AddressMapper接口，并在接口中添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.mapper;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><br><span class="hljs-comment">/** 处理收货地址数据的持久层接口 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">AddressMapper</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 插入收货地址数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> address 收货地址数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 受影响的行数</span><br><span class="hljs-comment">     */</span><br>    Integer <span class="hljs-title function_">insert</span><span class="hljs-params">(Address address)</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 统计某用户的收货地址数据的数量</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> uid 用户的id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 该用户的收货地址数据的数量</span><br><span class="hljs-comment">     */</span><br>    Integer <span class="hljs-title function_">countByUid</span><span class="hljs-params">(Integer uid)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-4-配置SQL映射"><a href="#3-4-配置SQL映射" class="headerlink" title="3.4 配置SQL映射"></a>3.4 配置SQL映射</h4><p>1.在src/main/resources/mapper文件夹下复制粘贴得到AddressMapper.xml映射文件，修改根节点mapper的namespace属性的值为com.cy.store.mapper.AddressMapper，并在根节点中配置pojo类属性与数据库中表的字段映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span></span><br><span class="hljs-meta">        <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="hljs-meta">        <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.cy.store.mapper.AddressMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">resultMap</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;AddressEntityMap&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;com.cy.store.entity.Address&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;aid&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;aid&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;province_code&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;provinceCode&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;province_name&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;provinceName&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;city_code&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;cityCode&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;city_name&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;cityName&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;area_code&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;areaCode&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;area_name&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;areaName&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;is_default&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;isDefault&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;created_user&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;createdUser&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;created_time&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;createdTime&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;modified_user&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;modifiedUser&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;modified_time&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;modifiedTime&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">resultMap</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressMapper.xml映射文件的根节点中配置以上两个抽象方法的映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 插入收货地址数据：Integer insert(Address address) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insert&quot;</span> <span class="hljs-attr">useGeneratedKeys</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">keyProperty</span>=<span class="hljs-string">&quot;aid&quot;</span>&gt;</span><br>    INSERT INTO t_address (<br>        uid, name, province_name, province_code, city_name, city_code, area_name, area_code, zip,<br>        address, phone, tel,tag, is_default, created_user, created_time, modified_user, modified_time<br>    ) VALUES (<br>        #&#123;uid&#125;, #&#123;name&#125;, #&#123;provinceName&#125;, #&#123;provinceCode&#125;, #&#123;cityName&#125;, #&#123;cityCode&#125;, #&#123;areaName&#125;,<br>        #&#123;areaCode&#125;, #&#123;zip&#125;, #&#123;address&#125;, #&#123;phone&#125;, #&#123;tel&#125;, #&#123;tag&#125;, #&#123;isDefault&#125;, #&#123;createdUser&#125;,<br>        #&#123;createdTime&#125;, #&#123;modifiedUser&#125;, #&#123;modifiedTime&#125;<br>    )<br><span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 统计某用户的收货地址数据的数量：Integer countByUid(Integer uid) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;countByUid&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;java.lang.Integer&quot;</span>&gt;</span><br>    SELECT<br>    	COUNT(*)<br>    FROM<br>   		t_address<br>    WHERE<br>    	uid=#&#123;uid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>3.在src/test/java下创建com.cy.store.mapper.AddressMapperTests测试类，在类定义之前添加测试的两个注解，在类中编写并执行以上两个抽象方法的测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.mapper;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><span class="hljs-keyword">import</span> org.junit.runner.RunWith;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><span class="hljs-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;<br><br><span class="hljs-meta">@RunWith(SpringRunner.class)</span><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressMapperTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> AddressMapper addressMapper;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Address</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Address</span>();<br>        address.setUid(<span class="hljs-number">18</span>);<br>        address.setName(<span class="hljs-string">&quot;admin&quot;</span>);<br>        address.setPhone(<span class="hljs-string">&quot;17858802974&quot;</span>);<br>        address.setAddress(<span class="hljs-string">&quot;雁塔区小寨赛格&quot;</span>);<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> addressMapper.insert(address);<br>        System.out.println(<span class="hljs-string">&quot;rows=&quot;</span> + rows);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">countByUid</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">18</span>;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> addressMapper.countByUid(uid);<br>        System.out.println(<span class="hljs-string">&quot;count=&quot;</span> + count);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-增收货地址-业务层"><a href="#4-增收货地址-业务层" class="headerlink" title="4 增收货地址-业务层"></a>4 增收货地址-业务层</h3><h4 id="4-1-规划异常"><a href="#4-1-规划异常" class="headerlink" title="4.1 规划异常"></a>4.1 规划异常</h4><p>1.无论用户将要增加的收货地址是不是默认收货地址，都需正常增加。即通过countByUid()方法统计的结果不管是不是0，都不能代表是错误的操作。</p>
+<p>2.在执行插入收货地址数据之前，需判断countByUid()方法返回值是否超出上限值，如果超出上限值则抛AddressCountLimitException异常。</p>
+<p>3.在执行插入数据时，还可能抛出InsertException异常，此异常无需再次创建。</p>
+<p>4.创建com.cy.store.service.ex.AddressCountLimitException类后，需继承自ServiceException类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.ex;<br><br><span class="hljs-comment">/** 收货地址数量达到上限的异常 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressCountLimitException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceException</span> &#123;<br>    <span class="hljs-comment">// Override Methods...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-2-接口与抽象方法"><a href="#4-2-接口与抽象方法" class="headerlink" title="4.2 接口与抽象方法"></a>4.2 接口与抽象方法</h4><p>创建com.cy.store.service.IAddressService业务层接口，并添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><br><span class="hljs-comment">/** 处理收货地址数据的业务层接口 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IAddressService</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 创建新的收货地址</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> uid 当前登录的用户的id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> username 当前登录的用户名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> address 用户提交的收货地址数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">addNewAddress</span><span class="hljs-params">(Integer uid, String username, Address address)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-3-实现抽象方法"><a href="#4-3-实现抽象方法" class="headerlink" title="4.3 实现抽象方法"></a>4.3 实现抽象方法</h4><p>1.创建com.cy.store.service.impl.AddressServiceImpl业务层实现类，在类定义之前添加@Service注解，并实现IAddressService接口，最后在类中添加持久层对象并使用@Autowired注解修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.impl;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><span class="hljs-keyword">import</span> com.cy.store.mapper.AddressMapper;<br><span class="hljs-keyword">import</span> com.cy.store.service.IAddressService;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IAddressService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> AddressMapper addressMapper;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addNewAddress</span><span class="hljs-params">(Integer uid, String username, Address address)</span> &#123;<br>		<span class="hljs-comment">// TODO</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.分析重写的addNewAddress(Integer uid, String username, Address address)抽象方法中的业务逻辑。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addNewAddress</span><span class="hljs-params">(Integer uid, String username, Address address)</span> &#123;<br>    <span class="hljs-comment">// 根据参数uid调用addressMapper的countByUid()方法，统计当前用户的收货地址数据的数量</span><br>    <span class="hljs-comment">// 判断数量是否达到上限值</span><br>    <span class="hljs-comment">// 是：抛出AddressCountLimitException</span><br><br>    <span class="hljs-comment">// 补全数据：将参数uid封装到参数address中</span><br>    <span class="hljs-comment">// 补全数据：根据以上统计的数量，得到正确的isDefault值(是否默认：0-不默认，1-默认)，并封装</span><br>    <span class="hljs-comment">// 补全数据：4项日志</span><br><br>    <span class="hljs-comment">// 调用addressMapper的insert()方法插入收货地址数据，并获取返回的受影响行数</span><br>    <span class="hljs-comment">// 判断受影响行数是否不为1</span><br>    <span class="hljs-comment">// 是：抛出InsertException</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.addNewAddress(Integer uid, String username, Address address)方法的具体代码实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.impl;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><span class="hljs-keyword">import</span> com.cy.store.mapper.AddressMapper;<br><span class="hljs-keyword">import</span> com.cy.store.service.IAddressService;<br><span class="hljs-keyword">import</span> com.cy.store.service.ex.AddressCountLimitException;<br><span class="hljs-keyword">import</span> com.cy.store.service.ex.InsertException;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Value;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IAddressService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> AddressMapper addressMapper;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;user.address.max-count&#125;&quot;)</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> maxCount;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addNewAddress</span><span class="hljs-params">(Integer uid, String username, Address address)</span> &#123;<br>        <span class="hljs-comment">// 根据参数uid调用addressMapper的countByUid(Integer uid)方法，统计当前用户的收货地址数据的数量</span><br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> addressMapper.countByUid(uid);<br>        <span class="hljs-comment">// 判断数量是否达到上限值</span><br>        <span class="hljs-keyword">if</span> (count &gt; maxCount) &#123;<br>            <span class="hljs-comment">// 是：抛出AddressCountLimitException</span><br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AddressCountLimitException</span>(<span class="hljs-string">&quot;收货地址数量已经达到上限(&quot;</span> + maxCount + <span class="hljs-string">&quot;)！&quot;</span>);<br>        &#125;<br><br>        <span class="hljs-comment">// 补全数据：将参数uid封装到参数address中</span><br>        address.setUid(uid);<br>        <span class="hljs-comment">// 补全数据：根据以上统计的数量，得到正确的isDefault值(是否默认：0-不默认，1-默认)，并封装</span><br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">isDefault</span> <span class="hljs-operator">=</span> count == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>        address.setIsDefault(IsDefault);<br>        <span class="hljs-comment">// 补全数据：4项日志</span><br>        <span class="hljs-type">Date</span> <span class="hljs-variable">now</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>        address.setCreatedUser(username);<br>        address.setCreatedTime(now);<br>        address.setModifiedUser(username);<br>        address.setModifiedTime(now);<br><br>        <span class="hljs-comment">// 调用addressMapper的insert(Address address)方法插入收货地址数据，并获取返回的受影响行数</span><br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> addressMapper.insert(address);<br>        <span class="hljs-comment">// 判断受影响行数是否不为1</span><br>        <span class="hljs-keyword">if</span> (rows != <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-comment">// 是：抛出InsertException</span><br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InsertException</span>(<span class="hljs-string">&quot;插入收货地址数据时出现未知错误，请联系系统管理员！&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4.在application.properties文件中添加收货地址数据上限值的配置。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">user.address.max-count</span>=<span class="hljs-string">20</span><br></code></pre></td></tr></table></figure>
+
+<p>5.在src/test/java下创建com.cy.store.service.AddressServiceTests测试类，在测试类中测试以上方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><span class="hljs-keyword">import</span> com.cy.store.service.ex.ServiceException;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><span class="hljs-keyword">import</span> org.junit.runner.RunWith;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><span class="hljs-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;<br><br><span class="hljs-meta">@RunWith(SpringRunner.class)</span><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressServiceTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IAddressService addressService;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addNewAddress</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;管理员&quot;</span>;<br>            <span class="hljs-type">Address</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Address</span>();<br>            address.setName(<span class="hljs-string">&quot;张三&quot;</span>);<br>            address.setPhone(<span class="hljs-string">&quot;17858805555&quot;</span>);<br>            address.setAddress(<span class="hljs-string">&quot;雁塔区小寨华旗&quot;</span>);<br>            addressService.addNewAddress(uid, username, address);<br>            System.out.println(<span class="hljs-string">&quot;OK.&quot;</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (ServiceException e) &#123;<br>            System.out.println(e.getClass().getSimpleName());<br>            System.out.println(e.getMessage());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-新增收货地址-控制器"><a href="#5-新增收货地址-控制器" class="headerlink" title="5 新增收货地址-控制器"></a>5 新增收货地址-控制器</h3><h4 id="5-1-处理异常"><a href="#5-1-处理异常" class="headerlink" title="5.1 处理异常"></a>5.1 处理异常</h4><p>在控制器层新增收货地址时，如果收货地址已经达到上限值，则抛出AddressCountLimitException异常，并在BaseController类中添加处理AddressCountLimitException的异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ...</span><br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> AddressCountLimitException) &#123;<br>	result.setState(<span class="hljs-number">4003</span>);<br>&#125;<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-2-设计请求"><a href="#5-2-设计请求" class="headerlink" title="5.2 设计请求"></a>5.2 设计请求</h4><p>设计用户提交的请求，并设计响应的方式。</p>
+<pre><code class="hljs">请求路径：/addresses/add_new_address
+请求参数：Address address, HttpSession session
+请求类型：POST
+响应结果：JsonResult&lt;Void&gt;
+</code></pre>
+<h4 id="5-3-处理请求"><a href="#5-3-处理请求" class="headerlink" title="5.3 处理请求"></a>5.3 处理请求</h4><p>1.创建com.cy.store.controller.AddressController控制器类继承自BaseController类，在类的声明添加@RequestMapping(“addresses”)和@RestController注解，在类中声明业务层对象并添加Autowired注解修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.controller;<br><span class="hljs-keyword">import</span> com.cy.store.service.IAddressService;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;addresses&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IAddressService addressService;    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.然后在AddressController类中添加处理请求的addNewAddress(Address address, HttpSession session)方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;add_new_address&quot;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;Void&gt; <span class="hljs-title function_">addNewAddress</span><span class="hljs-params">(Address address, HttpSession session)</span> &#123;<br>    <span class="hljs-comment">// 从Session中获取uid和username</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> getUsernameFromSession(session);<br><br>    <span class="hljs-comment">// 调用业务对象的方法执行业务</span><br>    addressService.addNewAddress(uid, username, address);<br>    <span class="hljs-comment">// 响应成功</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;Void&gt;(OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/addresses/add_new_address%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/addresses/add_new_address进行测试。</a></p>
+<p><img src="1.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h3 id="6-新增收货地址-前端页面"><a href="#6-新增收货地址-前端页面" class="headerlink" title="6 新增收货地址-前端页面"></a>6 新增收货地址-前端页面</h3><p>1.在addAddress.html页面中配置新增收货地址表单的属性。给form表单添加id=”form-add-new-address”属性、”请输入收货人姓名”添加name=”name”属性、”请输入邮政编码”添加name=”zip”属性、”输入详细的收货地址，小区名称、门牌号等”添加name=”address”属性、”请输入手机号码”添加name=”phone”属性、”请输入固定电话号码”添加name=”tel”属性、”请输入地址类型，如：家、公司或者学校”添加name=”tag”属性、”保存”按钮添加id=”btn-add-new-address”属性。以上属性如果已经添加无需重复添加。</p>
+<p>2.在addAddress.html页面中body标签内部的最后，添加script标签用于编写JavaScript程序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;<br>    $(<span class="hljs-string">&quot;#btn-add-new-address&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        $.<span class="hljs-title function_">ajax</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/addresses/add_new_address&quot;</span>,<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>            <span class="hljs-attr">data</span>: $(<span class="hljs-string">&quot;#form-add-new-address&quot;</span>).<span class="hljs-title function_">serialize</span>(),<br>            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>                <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;新增收货地址成功！&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;新增收货地址失败！&quot;</span> + json.<span class="hljs-property">message</span>);<br>                &#125;<br>            &#125;,<br>            <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">xhr</span>) &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;您的登录信息已经过期，请重新登录！HTTP响应码：&quot;</span> + xhr.<span class="hljs-property">status</span>);<br>                location.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;login.html&quot;</span>;<br>            &#125;<br>        &#125;);<br>	&#125;);<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>3.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/addAddress.html%E9%A1%B5%E9%9D%A2%E3%80%82">http://localhost:8080/web/addAddress.html页面。</a></p>
+<p><img src="2.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h2 id="获取省-市-区的列表"><a href="#获取省-市-区的列表" class="headerlink" title="获取省/市/区的列表"></a>获取省/市/区的列表</h2><h3 id="1-获取省-市-区的列表-数据库"><a href="#1-获取省-市-区的列表-数据库" class="headerlink" title="1 获取省/市/区的列表-数据库"></a>1 获取省/市/区的列表-数据库</h3><p>1.使用该数据库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE store;<br></code></pre></td></tr></table></figure>
+
+<p>2.向数据库中导入省/市/区数据t_dict_district.sql文件，执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; source C:/Users/yuanxin/t_dict_district.sql<br></code></pre></td></tr></table></figure>
+
+<p>3.创建省/市/区数据的com.cy.store.entity实体类，在类中声明与数据表中对应的属性，添加Getters and Setters方法，基于唯一标识id生成equals()方法及hashCode()和toString()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.entity;<br><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-comment">/** 省/市/区数据的实体类 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">District</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer id;<br>    <span class="hljs-keyword">private</span> String parent;<br>    <span class="hljs-keyword">private</span> String code;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-comment">// Generate: Getter and Setter、Generate hashCode() and equals()、toString()</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-获取省-市-区的列表-持久层"><a href="#2-获取省-市-区的列表-持久层" class="headerlink" title="2 获取省/市/区的列表-持久层"></a>2 获取省/市/区的列表-持久层</h3><h4 id="2-1-规划需要执行的SQL语句"><a href="#2-1-规划需要执行的SQL语句" class="headerlink" title="2.1 规划需要执行的SQL语句"></a>2.1 规划需要执行的SQL语句</h4><p>获取全国所有省/某省所有市/某市所有区的查询SQL语句大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from t_dict_district where parent=? order by code ASC;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-接口与抽象方法"><a href="#2-2-接口与抽象方法" class="headerlink" title="2.2 接口与抽象方法"></a>2.2 接口与抽象方法</h4><p>创建com.cy.store.mapper.DistrictMapper接口，添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.mapper;<br><span class="hljs-keyword">import</span> com.cy.store.entity.District;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/** 处理省/市/区数据的持久层接口 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DistrictMapper</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取全国所有省/某省所有市/某市所有区</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> parent 父级代号，当获取某市所有区时，使用市的代号；当获取省所有市时，使用省的代号；当获取全国所有省时，使用&quot;86&quot;作为父级代号</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 全国所有省/某省所有市/某市所有区的列表</span><br><span class="hljs-comment">     */</span><br>    List&lt;District&gt; <span class="hljs-title function_">findByParent</span><span class="hljs-params">(String parent)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-配置SQL映射"><a href="#2-3-配置SQL映射" class="headerlink" title="2.3 配置SQL映射"></a>2.3 配置SQL映射</h4><p>1.在src/main/resources/mapper中复制得到DistrictMapper.xml，修改根节点的namespace属性的值为以上接口文件，并配置以上抽象方法的映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span></span><br><span class="hljs-meta">        <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="hljs-meta">        <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.cy.store.mapper.DistrictMapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 获取全国所有省/某省所有市/某市所有区：List&lt;District&gt; findByParent(String parent) --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByParent&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.cy.store.entity.District&quot;</span>&gt;</span><br>        SELECT<br>            *<br>        FROM<br>            t_dict_district<br>        WHERE<br>            parent=#&#123;parent&#125;<br>        ORDER BY<br>            code ASC<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在src/test/java下创建com.cy.store.mapper.DistrictMapperTests测试类，编写并执行以上抽象方法的测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.mapper;<br><span class="hljs-keyword">import</span> com.cy.store.entity.District;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><span class="hljs-keyword">import</span> org.junit.runner.RunWith;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><span class="hljs-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-meta">@RunWith(SpringRunner.class)</span><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DistrictMapperTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> DistrictMapper districtMapper;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findByParent</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">parent</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;110100&quot;</span>;<br>        List&lt;District&gt; list = districtMapper.findByParent(parent);<br>        System.out.println(<span class="hljs-string">&quot;count=&quot;</span> + list.size());<br>        <span class="hljs-keyword">for</span> (District district : list) &#123;<br>            System.out.println(district);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-获取省-市-区的列表-业务层"><a href="#3-获取省-市-区的列表-业务层" class="headerlink" title="3 获取省/市/区的列表-业务层"></a>3 获取省/市/区的列表-业务层</h3><h4 id="3-1-规划异常"><a href="#3-1-规划异常" class="headerlink" title="3.1 规划异常"></a>3.1 规划异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="3-2-接口与抽象方法"><a href="#3-2-接口与抽象方法" class="headerlink" title="3.2 接口与抽象方法"></a>3.2 接口与抽象方法</h4><p>创建com.cy.store.service.IDistrictService接口，并添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service;<br><span class="hljs-keyword">import</span> com.cy.store.entity.District;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/** 处理省/市/区数据的业务层接口 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IDistrictService</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取全国所有省/某省所有市/某市所有区</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> parent 父级代号，当获取某市所有区时，使用市的代号；当获取某省所有市时，使用省的代号；当获取全国所有省时，使用&quot;86&quot;作为父级代号</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 全国所有省/某省所有市/某市所有区的列表</span><br><span class="hljs-comment">     */</span><br>    List&lt;District&gt; <span class="hljs-title function_">getByParent</span><span class="hljs-params">(String parent)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-3-实现抽象方法"><a href="#3-3-实现抽象方法" class="headerlink" title="3.3 实现抽象方法"></a>3.3 实现抽象方法</h4><p>1.创建com.cy.store.service.impl.DistrictServiceImpl类，实现IDistrictService接口，在类之前添加@Service注解，以及在类中添加持久层对象并使用@Autowired修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.impl;<br><span class="hljs-keyword">import</span> com.cy.store.entity.District;<br><span class="hljs-keyword">import</span> com.cy.store.mapper.DistrictMapper;<br><span class="hljs-keyword">import</span> com.cy.store.service.IDistrictService;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/** 处理省/市/区数据的业务层实现类 */</span><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DistrictServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IDistrictService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> DistrictMapper districtMapper;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> List&lt;District&gt; <span class="hljs-title function_">getByParent</span><span class="hljs-params">(String parent)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.在DistrictServiceImpl实现类中实现getByParent(String parent)方法的具体代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> List&lt;District&gt; <span class="hljs-title function_">getByParent</span><span class="hljs-params">(String parent)</span> &#123;<br>	List&lt;District&gt; list = districtMapper.findByParent(parent);<br>	<span class="hljs-keyword">for</span> (District district : list) &#123;<br>		district.setId(<span class="hljs-literal">null</span>);<br>		district.setParent(<span class="hljs-literal">null</span>);<br>	&#125;<br>	<span class="hljs-keyword">return</span> list;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.在src/test/java下创建com.cy.store.service.DistrictServiceTests测试类，编写并执行单元测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service;<br><span class="hljs-keyword">import</span> com.cy.store.entity.District;<br><span class="hljs-keyword">import</span> com.cy.store.service.ex.ServiceException;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><span class="hljs-keyword">import</span> org.junit.runner.RunWith;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><span class="hljs-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-meta">@RunWith(SpringRunner.class)</span><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DistrictServiceTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IDistrictService districtService;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getByParent</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">parent</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;86&quot;</span>;<br>            List&lt;District&gt; list = districtService.getByParent(parent);<br>            System.out.println(<span class="hljs-string">&quot;count=&quot;</span> + list.size());<br>            <span class="hljs-keyword">for</span> (District item : list) &#123;<br>                System.out.println(item);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (ServiceException e) &#123;<br>            System.out.println(e.getClass().getSimpleName());<br>            System.out.println(e.getMessage());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-获取省-市-区的列表-控制器"><a href="#4-获取省-市-区的列表-控制器" class="headerlink" title="4 获取省/市/区的列表-控制器"></a>4 获取省/市/区的列表-控制器</h3><h4 id="4-1-处理异常"><a href="#4-1-处理异常" class="headerlink" title="4.1 处理异常"></a>4.1 处理异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="4-2-设计请求"><a href="#4-2-设计请求" class="headerlink" title="4.2 设计请求"></a>4.2 设计请求</h4><p>设计用户提交的请求，并设计响应的方式。</p>
+<pre><code class="hljs">请求路径：/districts/
+请求参数：String parent
+请求类型：GET
+响应结果：JsonResult&lt;List&lt;District&gt;&gt;
+是否拦截：否，需要在拦截器的配置中添加白名单
+</code></pre>
+<h4 id="4-3-处理请求"><a href="#4-3-处理请求" class="headerlink" title="4.3 处理请求"></a>4.3 处理请求</h4><p>1.创建com.cy.store.controller.DistrictController控制器类，继承自BaseController类，在类之前添加@RequestMapping(“districts”)和@RestController注解，并在类中添加业务层对象，对其使用@Autowired注解修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.controller;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><span class="hljs-keyword">import</span> cn.tedu.store.entity.District;<br><span class="hljs-keyword">import</span> cn.tedu.store.service.IDistrictService;<br><span class="hljs-keyword">import</span> cn.tedu.store.util.JsonResult;<br><br><span class="hljs-meta">@RequestMapping(&quot;districts&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DistrictController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseController</span> &#123;<br>	<span class="hljs-meta">@Autowired</span><br>	<span class="hljs-keyword">private</span> IDistrictService districtService;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.在类中添加处理请求的方法getByParent(String parent)及方法的实现。</p>
+<blockquote>
+<p>@GetMapping：是一个组合注解，等价于@RequestMapping(method={RequestMethod.GET})，它将HTTP的GET请求映射到特定的处理方法上。“/”表示方法将处理所有传入的URI请求。简化代码。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&#123;&quot;&quot;, &quot;/&quot;&#125;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;List&lt;District&gt;&gt; <span class="hljs-title function_">getByParent</span><span class="hljs-params">(String parent)</span> &#123;<br>    List&lt;District&gt; data = districtService.getByParent(parent);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;&gt;(OK, data);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.在拦截器LoginInterceptorConfigurer类的addInterceptors(InterceptorRegistry registry)方法中将“districts”请求添加为白名单。如果已经添加无需重复添加。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">patterns.add(<span class="hljs-string">&quot;/districts/**&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>4.完成后启动项目，打开浏览器（不需要登录），直接访问<a target="_blank" rel="noopener" href="http://localhost:8080/districts?parent=86%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/districts?parent=86进行测试。</a></p>
+<p><img src="3.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h3 id="5-获取省-市-区的列表-前端页面"><a href="#5-获取省-市-区的列表-前端页面" class="headerlink" title="5 获取省/市/区的列表-前端页面"></a>5 获取省/市/区的列表-前端页面</h3><p>1.在addAddress.html页面中的head标签内导入的distpicker.data.js和distpicker.js文件注释掉。</p>
+<blockquote>
+<p>JQuery实现中国省市区地址三级联动插件Distpicker。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;!--<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../js/distpicker.data.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../js/distpicker.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br>--&gt;<br></code></pre></td></tr></table></figure>
+
+<p>2.在新增收货地址表单中，给”选择省”控件添加name=”provinceCode”和id=”province-list”属性，给”选择市”添加name=”cityCode”和id=”city-list”属性，给”选择区”控件添加name=”areaCode”和id=”area-list”属性。以上属性如果已经添加无需重复添加。</p>
+<p>3.在addAddress.html页面中body标签内的script标签中添加获取省/市/区列表的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;<br>    <span class="hljs-keyword">let</span> defaultOption = <span class="hljs-string">&#x27;&lt;option value=&quot;0&quot;&gt;----- 请选择 -----&lt;/option&gt;&#x27;</span>;<br><br>    $(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">showProvinceList</span>();<br>        $(<span class="hljs-string">&quot;#city-list&quot;</span>).<span class="hljs-title function_">append</span>(defaultOption);<br>        $(<span class="hljs-string">&quot;#area-list&quot;</span>).<span class="hljs-title function_">append</span>(defaultOption);<br>    &#125;);<br><br>    $(<span class="hljs-string">&quot;#province-list&quot;</span>).<span class="hljs-title function_">change</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">showCityList</span>();<br>    &#125;);<br><br>    $(<span class="hljs-string">&quot;#city-list&quot;</span>).<span class="hljs-title function_">change</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">showAreaList</span>();<br>    &#125;);<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">showProvinceList</span>(<span class="hljs-params"></span>) &#123;<br>        $(<span class="hljs-string">&quot;#province-list&quot;</span>).<span class="hljs-title function_">append</span>(defaultOption);<br>        $.<span class="hljs-title function_">ajax</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/districts&quot;</span>,<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;GET&quot;</span>,<br>            <span class="hljs-attr">data</span>: <span class="hljs-string">&quot;parent=86&quot;</span>,<br>            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>                <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-keyword">let</span> list = json.<span class="hljs-property">data</span>;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;count=&quot;</span> + list.<span class="hljs-property">length</span>);<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.<span class="hljs-property">length</span>; i++) &#123;<br>                        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list[i].<span class="hljs-property">name</span>);<br>                        <span class="hljs-keyword">let</span> option = <span class="hljs-string">&#x27;&lt;option value=&quot;&#x27;</span> + list[i].<span class="hljs-property">code</span> + <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span> + list[i].<span class="hljs-property">name</span> + <span class="hljs-string">&#x27;&lt;/option&gt;&#x27;</span>;<br>                        $(<span class="hljs-string">&quot;#province-list&quot;</span>).<span class="hljs-title function_">append</span>(option);<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;);<br>    &#125;<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">showCityList</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">let</span> parent = $(<span class="hljs-string">&quot;#province-list&quot;</span>).<span class="hljs-title function_">val</span>();<br>        $(<span class="hljs-string">&quot;#city-list&quot;</span>).<span class="hljs-title function_">empty</span>();<br>        $(<span class="hljs-string">&quot;#area-list&quot;</span>).<span class="hljs-title function_">empty</span>();<br><br>        $(<span class="hljs-string">&quot;#city-list&quot;</span>).<span class="hljs-title function_">append</span>(defaultOption);<br>        $(<span class="hljs-string">&quot;#area-list&quot;</span>).<span class="hljs-title function_">append</span>(defaultOption);<br><br>        <span class="hljs-keyword">if</span> (parent == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        $.<span class="hljs-title function_">ajax</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/districts&quot;</span>,<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;GET&quot;</span>,<br>            <span class="hljs-attr">data</span>: <span class="hljs-string">&quot;parent=&quot;</span> + parent,<br>            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>                <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-keyword">let</span> list = json.<span class="hljs-property">data</span>;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;count=&quot;</span> + list.<span class="hljs-property">length</span>);<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.<span class="hljs-property">length</span>; i++) &#123;<br>                        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list[i].<span class="hljs-property">name</span>);<br>                        <span class="hljs-keyword">let</span> option = <span class="hljs-string">&#x27;&lt;option value=&quot;&#x27;</span> + list[i].<span class="hljs-property">code</span> + <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span> + list[i].<span class="hljs-property">name</span> + <span class="hljs-string">&#x27;&lt;/option&gt;&#x27;</span>;<br>                        $(<span class="hljs-string">&quot;#city-list&quot;</span>).<span class="hljs-title function_">append</span>(option);<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;);<br>    &#125;<br><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">showAreaList</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">let</span> parent = $(<span class="hljs-string">&quot;#city-list&quot;</span>).<span class="hljs-title function_">val</span>();<br>        $(<span class="hljs-string">&quot;#area-list&quot;</span>).<span class="hljs-title function_">empty</span>();<br>        $(<span class="hljs-string">&quot;#area-list&quot;</span>).<span class="hljs-title function_">append</span>(defaultOption);<br><br>        <span class="hljs-keyword">if</span> (parent == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        $.<span class="hljs-title function_">ajax</span>(&#123;<br>            <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/districts&quot;</span>,<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;GET&quot;</span>,<br>            <span class="hljs-attr">data</span>: <span class="hljs-string">&quot;parent=&quot;</span> + parent,<br>            <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>                <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-keyword">let</span> list = json.<span class="hljs-property">data</span>;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;count=&quot;</span> + list.<span class="hljs-property">length</span>);<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.<span class="hljs-property">length</span>; i++) &#123;<br>                        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list[i].<span class="hljs-property">name</span>);<br>                        <span class="hljs-keyword">let</span> option = <span class="hljs-string">&#x27;&lt;option value=&quot;&#x27;</span> + list[i].<span class="hljs-property">code</span> + <span class="hljs-string">&#x27;&quot;&gt;&#x27;</span> + list[i].<span class="hljs-property">name</span> + <span class="hljs-string">&#x27;&lt;/option&gt;&#x27;</span>;<br>                        $(<span class="hljs-string">&quot;#area-list&quot;</span>).<span class="hljs-title function_">append</span>(option);<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;);<br>    &#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>JQuery事件-change()方法</strong></p>
+<p>1.定义和用法</p>
+<p>（1）当元素的值发生改变时，会发生change事件。</p>
+<p>（2）该事件仅适用于文本域(textfield)，以及textarea和select元素。</p>
+<p>（3）change()函数触发change事件，或规定当发生change事件时运行的函数。</p>
+<p>当用于select元素时，change事件会在选择某个选项时发生。当用于textfield或textarea时，该事件会在元素失去焦点时发生。</p>
+<p>2.触发change事件</p>
+<p>触发被选元素的change事件。语法：$(selector).change()</p>
+<p>3.将函数绑定到change事件</p>
+<p>规定当被选元素的 change 事件发生时运行的函数。语法：$(selector).change(function)</p>
+</blockquote>
+<p>4.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/addAddress.html%E9%A1%B5%E9%9D%A2%E3%80%82">http://localhost:8080/web/addAddress.html页面。</a></p>
+<p><img src="5.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<p>5.说明：如果输入的邮政编码位数大于6位数字，则会抛MysqlDataTruncation异常。</p>
+<p><img src="4.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h2 id="获取省-市-区的名称"><a href="#获取省-市-区的名称" class="headerlink" title="获取省/市/区的名称"></a>获取省/市/区的名称</h2><p>此功能模块主要实现根据省/市/区的行政代号获取省/市/区的名称。</p>
+<h3 id="1-获取省-市-区的名称-持久层"><a href="#1-获取省-市-区的名称-持久层" class="headerlink" title="1 获取省/市/区的名称-持久层"></a>1 获取省/市/区的名称-持久层</h3><h4 id="1-1-规划需要执行的SQL语句"><a href="#1-1-规划需要执行的SQL语句" class="headerlink" title="1.1 规划需要执行的SQL语句"></a>1.1 规划需要执行的SQL语句</h4><p>根据省/市/区的行政代号获取省/市/区的名称，需要执行的SQL语句大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select name from t_dict_district where code=?<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-接口与抽象方法"><a href="#1-2-接口与抽象方法" class="headerlink" title="1.2 接口与抽象方法"></a>1.2 接口与抽象方法</h4><p>在DistrictMapper接口中添加根据省/市/区的行政代号获取省/市/区的名称findNameByCode(String code)抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据省/市/区的行政代号获取省/市/区的名称</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> code 省/市/区的行政代号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 匹配的省/市/区的名称，如果没有匹配的数据则返回null</span><br><span class="hljs-comment"> */</span><br>String <span class="hljs-title function_">findNameByCode</span><span class="hljs-params">(String code)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-配置SQL映射"><a href="#1-3-配置SQL映射" class="headerlink" title="1.3 配置SQL映射"></a>1.3 配置SQL映射</h4><p>1.在DistrictMapper.xml文件中配置映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 根据省/市/区的行政代号获取省/市/区的名称：String findNameByCode(String code) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findNameByCode&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span>&gt;</span><br>    SELECT<br>    	name<br>    FROM<br>    	t_dict_district<br>    WHERE<br>    	code=#&#123;code&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.然后在DistrictMapperTests测试类中编写并执行测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findNameByCode</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;540000&quot;</span>;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> districtMapper.findNameByCode(code);<br>    System.out.println(name);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-获取省-市-区的名称-业务层"><a href="#2-获取省-市-区的名称-业务层" class="headerlink" title="2 获取省/市/区的名称-业务层"></a>2 获取省/市/区的名称-业务层</h3><h4 id="2-1-规划异常"><a href="#2-1-规划异常" class="headerlink" title="2.1 规划异常"></a>2.1 规划异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="2-2-接口与抽象方法-1"><a href="#2-2-接口与抽象方法-1" class="headerlink" title="2.2 接口与抽象方法"></a>2.2 接口与抽象方法</h4><p>在业务层IDistrictService接口中添加getNameByCode(String code)抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据省/市/区的行政代号获取省/市/区的名称</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> code 省/市/区的行政代号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 匹配的省/市/区的名称，如果没有匹配的数据则返回null</span><br><span class="hljs-comment"> */</span><br>String <span class="hljs-title function_">getNameByCode</span><span class="hljs-params">(String code)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-实现抽象方法"><a href="#2-3-实现抽象方法" class="headerlink" title="2.3 实现抽象方法"></a>2.3 实现抽象方法</h4><p>1.在业务层DistrictServiceImpl类中重写getNameByCode(String code)方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">getNameByCode</span><span class="hljs-params">(String code)</span> &#123;<br>    <span class="hljs-keyword">return</span> districtMapper.findNameByCode(code);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.然后在DistrictServiceTests测试类中编写并执行测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getNameByCode</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">code</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;430000&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> districtService.getNameByCode(code);<br>        System.out.println(result);<br>    &#125; <span class="hljs-keyword">catch</span> (ServiceException e) &#123;<br>        System.out.println(e.getClass().getSimpleName());<br>        System.out.println(e.getMessage());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-新增收货地址-业务层优化"><a href="#3-新增收货地址-业务层优化" class="headerlink" title="3 新增收货地址-业务层优化"></a>3 新增收货地址-业务层优化</h3><p>1.在AddressServiceImpl类中声明处理省/市/区数据的业务层对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> IDistrictService districtService;<br></code></pre></td></tr></table></figure>
+
+<p>2.在addNewAddress(Integer uid, String username, Address address)方法中补全省/市/区数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 补全数据：省、市、区的名称</span><br><span class="hljs-type">String</span> <span class="hljs-variable">provinceName</span> <span class="hljs-operator">=</span> districtService.getNameByCode(address.getProvinceCode());<br><span class="hljs-type">String</span> <span class="hljs-variable">cityName</span> <span class="hljs-operator">=</span> districtService.getNameByCode(address.getCityCode());<br><span class="hljs-type">String</span> <span class="hljs-variable">areaName</span> <span class="hljs-operator">=</span> districtService.getNameByCode(address.getAreaCode());<br>address.setProvinceName(provinceName);<br>address.setCityName(cityName);<br>address.setAreaName(areaName);<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-新增收货地址-前端页面测试"><a href="#4-新增收货地址-前端页面测试" class="headerlink" title="4 新增收货地址-前端页面测试"></a>4 新增收货地址-前端页面测试</h3><p>1.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/addAddress.html%E9%A1%B5%E9%9D%A2%E3%80%82%E8%BE%93%E5%85%A5%E6%94%B6%E8%B4%A7%E4%BA%BA%E7%9B%B8%E5%85%B3%E7%9A%84%E4%BF%A1%E6%81%AF%E5%B9%B6%E4%BF%9D%E5%AD%98%E3%80%82">http://localhost:8080/web/addAddress.html页面。输入收货人相关的信息并保存。</a></p>
+<p><img src="7.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<p>2.在后台数据库中检查数据是否被正常的插入到t_address表中。</p>
+<p><img src="8.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h2 id="收货地址列表"><a href="#收货地址列表" class="headerlink" title="收货地址列表"></a>收货地址列表</h2><h3 id="1-收货地址列表显示-持久层"><a href="#1-收货地址列表显示-持久层" class="headerlink" title="1 收货地址列表显示-持久层"></a>1 收货地址列表显示-持久层</h3><h4 id="1-1-规划需要执行的SQL语句-1"><a href="#1-1-规划需要执行的SQL语句-1" class="headerlink" title="1.1 规划需要执行的SQL语句"></a>1.1 规划需要执行的SQL语句</h4><p>显示当前登录用户的收货地址列表的SQL语句大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from t_address where uid=? order by is_default desc, created_time desc;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-接口与抽象方法-1"><a href="#1-2-接口与抽象方法-1" class="headerlink" title="1.2 接口与抽象方法"></a>1.2 接口与抽象方法</h4><p>在AddressMapper接口中添加findByUid(Integer uid)抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 查询某用户的收货地址列表数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 收货地址归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 该用户的收货地址列表数据</span><br><span class="hljs-comment"> */</span><br>List&lt;Address&gt; <span class="hljs-title function_">findByUid</span><span class="hljs-params">(Integer uid)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-配置SQL映射-1"><a href="#1-3-配置SQL映射-1" class="headerlink" title="1.3 配置SQL映射"></a>1.3 配置SQL映射</h4><p>1.在AddressMapper.xml文件中配置findByUid(Integer uid)方法的映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--</span><br><span class="hljs-comment">&lt;resultMap id=&quot;AddressEntityMap&quot; type=&quot;cn.tedu.store.entity.Address&quot;&gt;</span><br><span class="hljs-comment">	&lt;id column=&quot;aid&quot; property=&quot;aid&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;province_code&quot; property=&quot;provinceCode&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;province_name&quot; property=&quot;provinceName&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;city_code&quot; property=&quot;cityCode&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;city_name&quot; property=&quot;cityName&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;area_code&quot; property=&quot;areaCode&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;area_name&quot; property=&quot;areaName&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;is_default&quot; property=&quot;isDefault&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;created_user&quot; property=&quot;createdUser&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;created_time&quot; property=&quot;createdTime&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;modified_user&quot; property=&quot;modifiedUser&quot;/&gt;</span><br><span class="hljs-comment">	&lt;result column=&quot;modified_time&quot; property=&quot;modifiedTime&quot;/&gt;</span><br><span class="hljs-comment">&lt;/resultMap&gt;</span><br><span class="hljs-comment">--&gt;</span><br><br><span class="hljs-comment">&lt;!-- 查询某用户的收货地址列表数据：List&lt;Address&gt; findByUid(Integer uid) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByUid&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;AddressEntityMap&quot;</span>&gt;</span><br>	SELECT<br>		*<br>	FROM<br>		t_address<br>	WHERE<br>		uid=#&#123;uid&#125;<br>	ORDER BY<br>		is_default DESC, created_time DESC<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressMapperTests测试类中添加findByUid()测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findByUid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">26</span>;<br>    List&lt;Address&gt; list = addressMapper.findByUid(uid);<br>    System.out.println(<span class="hljs-string">&quot;count=&quot;</span> + list.size());<br>    <span class="hljs-keyword">for</span> (Address item : list) &#123;<br>        System.out.println(item);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-收货地址列表显示-业务层"><a href="#2-收货地址列表显示-业务层" class="headerlink" title="2 收货地址列表显示-业务层"></a>2 收货地址列表显示-业务层</h3><h4 id="2-1-规划异常-1"><a href="#2-1-规划异常-1" class="headerlink" title="2.1 规划异常"></a>2.1 规划异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="2-2-接口与抽象方法-2"><a href="#2-2-接口与抽象方法-2" class="headerlink" title="2.2 接口与抽象方法"></a>2.2 接口与抽象方法</h4><p>在IAddressService接口中添加getByUid(Integer uid)抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 查询某用户的收货地址列表数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 收货地址归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 该用户的收货地址列表数据</span><br><span class="hljs-comment"> */</span><br>List&lt;Address&gt; <span class="hljs-title function_">getByUid</span><span class="hljs-params">(Integer uid)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-实现抽象方法-1"><a href="#2-3-实现抽象方法-1" class="headerlink" title="2.3 实现抽象方法"></a>2.3 实现抽象方法</h4><p>1.在AddressServiceImpl类中实现getByUid(Integer uid)抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> List&lt;Address&gt; <span class="hljs-title function_">getByUid</span><span class="hljs-params">(Integer uid)</span> &#123;<br>	List&lt;Address&gt; list = addressMapper.findByUid(uid);<br>	<span class="hljs-keyword">for</span> (Address address : list) &#123;<br>		address.setUid(<span class="hljs-literal">null</span>);<br>		address.setProvinceCode(<span class="hljs-literal">null</span>);<br>		address.setCityCode(<span class="hljs-literal">null</span>);<br>		address.setAreaCode(<span class="hljs-literal">null</span>);<br>		address.setCreatedUser(<span class="hljs-literal">null</span>);<br>		address.setCreatedTime(<span class="hljs-literal">null</span>);<br>		address.setModifiedUser(<span class="hljs-literal">null</span>);<br>		address.setModifiedTime(<span class="hljs-literal">null</span>);<br>	&#125;<br>	<span class="hljs-keyword">return</span> list;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressServiceTests测试类中添加getByUid()测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getByUid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">26</span>;<br>    List&lt;Address&gt; list = addressService.getByUid(uid);<br>    System.out.println(<span class="hljs-string">&quot;count=&quot;</span> + list.size());<br>    <span class="hljs-keyword">for</span> (Address item : list) &#123;<br>        System.out.println(item);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-收货地址列表显示-控制器"><a href="#3-收货地址列表显示-控制器" class="headerlink" title="3 收货地址列表显示-控制器"></a>3 收货地址列表显示-控制器</h3><h4 id="3-1-处理异常"><a href="#3-1-处理异常" class="headerlink" title="3.1 处理异常"></a>3.1 处理异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="3-2-设计请求"><a href="#3-2-设计请求" class="headerlink" title="3.2 设计请求"></a>3.2 设计请求</h4><p>设计用户提交的请求，并设计响应的方式。</p>
+<pre><code class="hljs">请求路径：/addresses
+请求参数：HttpSession session
+请求类型：GET
+响应结果：JsonResult&lt;List&lt;Address&gt;&gt;
+</code></pre>
+<h4 id="3-3-处理请求"><a href="#3-3-处理请求" class="headerlink" title="3.3 处理请求"></a>3.3 处理请求</h4><p>1.在AddressController类中添加处理请求的getByUid(HttpSession session)方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&#123;&quot;&quot;, &quot;/&quot;&#125;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;List&lt;Address&gt;&gt; <span class="hljs-title function_">getByUid</span><span class="hljs-params">(HttpSession session)</span> &#123;<br>	<span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>	List&lt;Address&gt; data = addressService.getByUid(uid);<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;&gt;(OK, data);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/addresses%E9%A1%B5%E9%9D%A2%E3%80%82">http://localhost:8080/addresses页面。</a></p>
+<p><img src="9.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h3 id="4-收货地址列表显示-前端页面"><a href="#4-收货地址列表显示-前端页面" class="headerlink" title="4 收货地址列表显示-前端页面"></a>4 收货地址列表显示-前端页面</h3><p>1.在address.html页面中body标签内部的最后，添加展示用户收货地址列表数据的JavaScript代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;<br>$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">showAddressList</span>();<br>&#125;);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">showAddressList</span>(<span class="hljs-params"></span>) &#123;<br>    $(<span class="hljs-string">&quot;#address-list&quot;</span>).<span class="hljs-title function_">empty</span>();<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/addresses&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;GET&quot;</span>,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-keyword">let</span> list = json.<span class="hljs-property">data</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.<span class="hljs-property">length</span>; i++) &#123;<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list[i].<span class="hljs-property">name</span>);<br>                <span class="hljs-keyword">let</span> address = <span class="hljs-string">&#x27;&lt;tr&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;#&#123;tag&#125;&lt;/td&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;#&#123;name&#125;&lt;/td&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;#&#123;province&#125;#&#123;city&#125;#&#123;area&#125;#&#123;address&#125;&lt;/td&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;#&#123;phone&#125;&lt;/td&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;&lt;a class=&quot;btn btn-xs btn-info&quot;&gt;&lt;span class=&quot;fa fa-edit&quot;&gt;&lt;/span&gt; 修改&lt;/a&gt;&lt;/td&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;&lt;a class=&quot;btn btn-xs add-del btn-info&quot;&gt;&lt;span class=&quot;fa fa-trash-o&quot;&gt;&lt;/span&gt; 删除&lt;/a&gt;&lt;/td&gt;&#x27;</span><br>                    + <span class="hljs-string">&#x27;&lt;td&gt;&lt;a class=&quot;btn btn-xs add-def btn-default&quot;&gt;设为默认&lt;/a&gt;&lt;/td&gt;&#x27;</span><br>                + <span class="hljs-string">&#x27;&lt;/tr&gt;&#x27;</span>;<br><br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/#&#123;aid&#125;/g</span>, list[i].<span class="hljs-property">aid</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/#&#123;tag&#125;/g</span>, list[i].<span class="hljs-property">tag</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;#&#123;name&#125;&quot;</span>, list[i].<span class="hljs-property">name</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;#&#123;province&#125;&quot;</span>, list[i].<span class="hljs-property">provinceName</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;#&#123;city&#125;&quot;</span>, list[i].<span class="hljs-property">cityName</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;#&#123;area&#125;&quot;</span>, list[i].<span class="hljs-property">areaName</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;#&#123;address&#125;&quot;</span>, list[i].<span class="hljs-property">address</span>);<br>                address = address.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;#&#123;phone&#125;&quot;</span>, list[i].<span class="hljs-property">phone</span>);<br><br>                $(<span class="hljs-string">&quot;#address-list&quot;</span>).<span class="hljs-title function_">append</span>(address);<br>            &#125;<br>            $(<span class="hljs-string">&quot;.add-def:eq(0)&quot;</span>).<span class="hljs-title function_">hide</span>();<br>        &#125;<br>    &#125;);<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>2.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/address.html%E9%A1%B5%E9%9D%A2%E3%80%82">http://localhost:8080/web/address.html页面。</a></p>
+<p><img src="10.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h2 id="默认收货地址"><a href="#默认收货地址" class="headerlink" title="默认收货地址"></a>默认收货地址</h2><h3 id="1-默认收货地址-持久层"><a href="#1-默认收货地址-持久层" class="headerlink" title="1 默认收货地址-持久层"></a>1 默认收货地址-持久层</h3><h4 id="1-1-规划需要执行的SQL语句-2"><a href="#1-1-规划需要执行的SQL语句-2" class="headerlink" title="1.1 规划需要执行的SQL语句"></a>1.1 规划需要执行的SQL语句</h4><p>1.将某用户的所有收货地址设置为非默认地址（是否默认：0-不默认，1-默认）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update t_address set is_default=0 where uid=?<br></code></pre></td></tr></table></figure>
+
+<p>2.将某用户指定的收货地址设置为默认地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update t_address set is_default=1, modified_user=?, modified_time=? where aid=?<br></code></pre></td></tr></table></figure>
+
+<p>3.检查该收货地址是否存在，并检查数据归属是否正确。可根据收货地址aid值，查询收货地址详情数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from t_address where aid=?<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-接口与抽象方法-2"><a href="#1-2-接口与抽象方法-2" class="headerlink" title="1.2 接口与抽象方法"></a>1.2 接口与抽象方法</h4><p>在AddressMapper接口中声明三个抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 将某用户的所有收货地址设置为非默认地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 收货地址归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 受影响的行数</span><br><span class="hljs-comment"> */</span><br>Integer <span class="hljs-title function_">updateNonDefaultByUid</span><span class="hljs-params">(Integer uid)</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 将指定的收货地址设置为默认地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> aid 收货地址id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> modifiedUser 修改执行人</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> modifiedTime 修改时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 受影响的行数</span><br><span class="hljs-comment"> */</span><br>Integer <span class="hljs-title function_">updateDefaultByAid</span><span class="hljs-params">(</span><br><span class="hljs-params">        <span class="hljs-meta">@Param(&quot;aid&quot;)</span> Integer aid,</span><br><span class="hljs-params">        <span class="hljs-meta">@Param(&quot;modifiedUser&quot;)</span> String modifiedUser,</span><br><span class="hljs-params">        <span class="hljs-meta">@Param(&quot;modifiedTime&quot;)</span> Date modifiedTime)</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据收货地址aid值，查询收货地址详情</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> aid 收货地址id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 匹配的收货地址详情，如果没有匹配的数据，则返回null</span><br><span class="hljs-comment"> */</span><br>Address <span class="hljs-title function_">findByAid</span><span class="hljs-params">(Integer aid)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-配置SQL映射-2"><a href="#1-3-配置SQL映射-2" class="headerlink" title="1.3 配置SQL映射"></a>1.3 配置SQL映射</h4><p>1.在AddressMapper.xml映射文件，配置以上三个抽象方法的映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 将某用户的所有收货地址设置为非默认地址：Integer updateNonDefaultByUid(Integer uid) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateNonDefaultByUid&quot;</span>&gt;</span><br>    UPDATE<br>    	t_address<br>    SET<br>    	is_default=0<br>    WHERE<br>    	uid=#&#123;uid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 将指定的收货地址设置为默认地址：</span><br><span class="hljs-comment">         Integer updateDefaultByAid(</span><br><span class="hljs-comment">            @Param(&quot;aid&quot;) Integer aid,</span><br><span class="hljs-comment">            @Param(&quot;modifiedUser&quot;) String modifiedUser,</span><br><span class="hljs-comment">            @Param(&quot;modifiedTime&quot;) Date modifiedTime) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateDefaultByAid&quot;</span>&gt;</span><br>    UPDATE<br>    	t_address<br>    SET<br>        is_default=1,<br>        modified_user=#&#123;modifiedUser&#125;,<br>        modified_time=#&#123;modifiedTime&#125;<br>    WHERE<br>    	aid=#&#123;aid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 根据收货地址aid值，查询收货地址详情：Address findByAid(Integer aid) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByAid&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;AddressEntityMap&quot;</span>&gt;</span><br>    SELECT<br>    	*<br>    FROM<br>    	t_address<br>    WHERE<br>    	aid=#&#123;aid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressMapperTests类中编写并执行以上三个抽象方法的测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateNonDefaultByUid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">26</span>;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> addressMapper.updateNonDefaultByUid(uid);<br>    System.out.println(<span class="hljs-string">&quot;rows=&quot;</span> + rows);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateDefaultByAid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">aid</span> <span class="hljs-operator">=</span> <span class="hljs-number">11</span>;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">modifiedUser</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;管理员&quot;</span>;<br>    <span class="hljs-type">Date</span> <span class="hljs-variable">modifiedTime</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> addressMapper.updateDefaultByAid(aid, modifiedUser, modifiedTime);<br>    System.out.println(<span class="hljs-string">&quot;rows=&quot;</span> + rows);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findByAid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">aid</span> <span class="hljs-operator">=</span> <span class="hljs-number">11</span>;<br>    <span class="hljs-type">Address</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> addressMapper.findByAid(aid);<br>    System.out.println(result);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-默认收货地址-业务层"><a href="#2-默认收货地址-业务层" class="headerlink" title="2 默认收货地址-业务层"></a>2 默认收货地址-业务层</h3><h4 id="2-1-规划异常-2"><a href="#2-1-规划异常-2" class="headerlink" title="2.1 规划异常"></a>2.1 规划异常</h4><p>1.在执行设置默认收货地址之前，需要先检查该收货地址数据是否存在，如果不存在则抛出AddressNotFoundException异常。</p>
+<p>2.然后还需要检查数据归属是否正确，也就是不可以操作他人的数据，如果该数据中记录的uid与当前登录的用户的uid不一致，则抛出AccessDeniedException异常。</p>
+<p>3.检查通过后先全部设置为非默认，然后将指定的收货地址设置为默认；这两种操作都是更新数据的操作，则可能抛出UpdateException异常。</p>
+<p>4.在com.cy.store.service.ex包下创建AddressNotFoundException和AccessDeniedException异常类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.ex;<br><br><span class="hljs-comment">/** 收货地址数据不存在的异常 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressNotFoundException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceException</span> &#123;<br>    <span class="hljs-comment">// Override Methods...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.ex;<br><br><span class="hljs-comment">/** 非法访问的异常 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AccessDeniedException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceException</span> &#123;<br>    <span class="hljs-comment">// Override Methods...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-接口与抽象方法-3"><a href="#2-2-接口与抽象方法-3" class="headerlink" title="2.2 接口与抽象方法"></a>2.2 接口与抽象方法</h4><p>在IAddressService接口中添加setDefault(Integer aid, Integer uid, String username)抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 设置默认收货地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> aid 收货地址id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> username 当前登录的用户名</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">setDefault</span><span class="hljs-params">(Integer aid, Integer uid, String username)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-实现抽象方法-2"><a href="#2-3-实现抽象方法-2" class="headerlink" title="2.3 实现抽象方法"></a>2.3 实现抽象方法</h4><p>1.在AddressServiceImpl类中重写setDefault(Integer aid, Integer uid, String username)方法。该方法需要添加@Transactional注解。</p>
+<blockquote>
+<p>事务：基于Spring JDBC的事务（Transaction）处理，使用事务可以保证一系列的增删改操作，要么全部执行成功，要么全部执行失败。@Transactional注解可以用来修饰类也可以用来修饰方法。如果添加在业务类之前，则该业务类中的方法均以事务的机制运行，但是一般并不推荐这样处理。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDefault</span><span class="hljs-params">(Integer aid, Integer uid, String username)</span> &#123;<br>	<span class="hljs-comment">// 根据参数aid，调用addressMapper中的findByAid()查询收货地址数据</span><br>	<span class="hljs-comment">// 判断查询结果是否为null</span><br>	<span class="hljs-comment">// 是：抛出AddressNotFoundException</span><br><br>	<span class="hljs-comment">// 判断查询结果中的uid与参数uid是否不一致(使用equals()判断)</span><br>	<span class="hljs-comment">// 是：抛出AccessDeniedException：非法访问</span><br><br>	<span class="hljs-comment">// 调用addressMapepr的updateNonDefaultByUid()将该用户的所有收货地址全部设置为非默认，并获取返回的受影响的行数</span><br>	<span class="hljs-comment">// 判断受影响的行数是否小于1(不大于0)</span><br>	<span class="hljs-comment">// 是：抛出UpdateException</span><br><br>	<span class="hljs-comment">// 调用addressMapepr的updateDefaultByAid()将指定aid的收货地址设置为默认，并获取返回的受影响的行数</span><br>	<span class="hljs-comment">// 判断受影响的行数是否不为1</span><br>	<span class="hljs-comment">// 是：抛出UpdateException</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.setDefault(Integer aid, Integer uid, String username)方法的具体代码实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDefault</span><span class="hljs-params">(Integer aid, Integer uid, String username)</span> &#123;<br>    <span class="hljs-comment">// 根据参数aid，调用addressMapper中的findByAid()查询收货地址数据</span><br>    <span class="hljs-type">Address</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> addressMapper.findByAid(aid);<br>    <span class="hljs-comment">// 判断查询结果是否为null</span><br>    <span class="hljs-keyword">if</span> (result == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// 是：抛出AddressNotFoundException</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AddressNotFoundException</span>(<span class="hljs-string">&quot;尝试访问的收货地址数据不存在&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 判断查询结果中的uid与参数uid是否不一致(使用equals()判断)</span><br>    <span class="hljs-keyword">if</span> (!result.getUid().equals(uid)) &#123;<br>        <span class="hljs-comment">// 是：抛出AccessDeniedException</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AccessDeniedException</span>(<span class="hljs-string">&quot;非法访问的异常&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 调用addressMapper的updateNonDefaultByUid()将该用户的所有收货地址全部设置为非默认，并获取返回受影响的行数</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> addressMapper.updateNonDefaultByUid(uid);<br>    <span class="hljs-comment">// 判断受影响的行数是否小于1(不大于0)</span><br>    <span class="hljs-keyword">if</span> (rows &lt; <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-comment">// 是：抛出UpdateException</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateException</span>(<span class="hljs-string">&quot;设置默认收货地址时出现未知错误[1]&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 调用addressMapper的updateDefaultByAid()将指定aid的收货地址设置为默认，并获取返回的受影响的行数</span><br>    rows = addressMapper.updateDefaultByAid(aid, username, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>    <span class="hljs-comment">// 判断受影响的行数是否不为1</span><br>    <span class="hljs-keyword">if</span> (rows != <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-comment">// 是：抛出UpdateException</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateException</span>(<span class="hljs-string">&quot;设置默认收货地址时出现未知错误[2]&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.在AddressServiceTests测试类，编写并执行单元测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDefault</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">aid</span> <span class="hljs-operator">=</span> <span class="hljs-number">13</span>;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">27</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;系统管理员&quot;</span>;<br>        addressService.setDefault(aid, uid, username);<br>        System.out.println(<span class="hljs-string">&quot;OK.&quot;</span>);<br>    &#125; <span class="hljs-keyword">catch</span> (ServiceException e) &#123;<br>        System.out.println(e.getClass().getSimpleName());<br>        System.out.println(e.getMessage());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-默认收货地址-控制器"><a href="#3-默认收货地址-控制器" class="headerlink" title="3 默认收货地址-控制器"></a>3 默认收货地址-控制器</h3><h4 id="3-1-处理异常-1"><a href="#3-1-处理异常-1" class="headerlink" title="3.1 处理异常"></a>3.1 处理异常</h4><p>在BaseController类中添加处理AddressNotFoundException和AccessDeniedException的异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ...</span><br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> AddressNotFoundException) &#123;<br>    result.setState(<span class="hljs-number">4004</span>);<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> AccessDeniedException) &#123;<br>    result.setState(<span class="hljs-number">4005</span>);<br>&#125;<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-设计请求-1"><a href="#3-2-设计请求-1" class="headerlink" title="3.2 设计请求"></a>3.2 设计请求</h4><p>设计用户提交的请求，并设计响应的方式。</p>
+<pre><code class="hljs">请求路径：/addresses/&#123;aid&#125;/set_default
+请求参数：@PathVaraible(&quot;aid&quot;) Integer aid, HttpSession sesion
+请求类型：POST
+响应结果：JsonResult&lt;Void&gt;
+</code></pre>
+<p>REST即表述性状态传递（Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。它是一种针对网络应用的设计和开发方式，可以降低开发的复杂性，提高系统的可伸缩性。</p>
+<h4 id="3-3-处理请求-1"><a href="#3-3-处理请求-1" class="headerlink" title="3.3 处理请求"></a>3.3 处理请求</h4><p>1.在AddressController类中添加处理请求的setDefault(@PathVariable(“aid”) Integer aid, HttpSession session)方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;&#123;aid&#125;/set_default&quot;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;Void&gt; <span class="hljs-title function_">setDefault</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;aid&quot;)</span> Integer aid, HttpSession session)</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> getUsernameFromSession(session);<br>    addressService.setDefault(aid, uid, username);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;Void&gt;(OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/addresses/13/set_default%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/addresses/13/set_default进行测试。</a></p>
+<p><img src="6.png" srcset="/img/loading.gif" lazyload alt="电脑商城06"></p>
+<h3 id="4-默认收货地址-前端页面"><a href="#4-默认收货地址-前端页面" class="headerlink" title="4 默认收货地址-前端页面"></a>4 默认收货地址-前端页面</h3><p>1.在address.html页面中body标签内部的script标签内，添加设置用户默认收货地址的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">setDefault</span>(<span class="hljs-params">aid</span>) &#123;<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/addresses/&quot;</span> + aid + <span class="hljs-string">&quot;/set_default&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                <span class="hljs-title function_">showAddressList</span>();<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;设置默认收货地址失败！&quot;</span> + json.<span class="hljs-property">message</span>);<br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">xhr</span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;您的登录信息已经过期，请重新登录！HTTP响应码：&quot;</span> + xhr.<span class="hljs-property">status</span>);<br>            location.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;login.html&quot;</span>;<br>        &#125;<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.给showAddressList()方法中的“设为默认”超链接按钮添加设置默认收货地址的点击事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;td&gt;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setDefault(#&#123;aid&#125;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-xs add-def btn-default&quot;</span>&gt;</span>设为默认<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>&lt;/td&gt;<br></code></pre></td></tr></table></figure>
+
+<p>3.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/address.html%E9%A1%B5%E9%9D%A2%EF%BC%8C%E7%82%B9%E5%87%BB%E2%80%9C%E8%AE%BE%E4%B8%BA%E9%BB%98%E8%AE%A4%E2%80%9D%E8%B6%85%E9%93%BE%E6%8E%A5%E6%8C%89%E9%92%AE%E8%BF%9B%E8%A1%8C%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/web/address.html页面，点击“设为默认”超链接按钮进行功能测试。</a></p>
+<h2 id="删除收货地址"><a href="#删除收货地址" class="headerlink" title="删除收货地址"></a>删除收货地址</h2><h3 id="1-删除收货地址-持久层"><a href="#1-删除收货地址-持久层" class="headerlink" title="1 删除收货地址-持久层"></a>1 删除收货地址-持久层</h3><h4 id="1-1-规划需要执行的SQL语句-3"><a href="#1-1-规划需要执行的SQL语句-3" class="headerlink" title="1.1 规划需要执行的SQL语句"></a>1.1 规划需要执行的SQL语句</h4><p>1.在删除之前，需检查数据是否存在，数据归属是否正确。此功能已完成，无需再次开发。</p>
+<p>2.删除指定的收货地址的SQL语句大致是。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">delete from t_address where aid=?<br></code></pre></td></tr></table></figure>
+
+<p>3.如果删除的这条数据是默认收货地址，则应该将剩余的收货地址中的某一条设置为默认收货地址，可以设定规则“将最近修改的设置为默认收货地址”，要实现此功能就必须要知道“最近修改的收货地址的id是多少”。则通过以下查询语句完成。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from t_address where uid=? order by modified_time desc limit 0,1<br></code></pre></td></tr></table></figure>
+
+<p>4.在执行以上操作之前，还需检查该用户的收货地址数据的数量，如果删除的收货地址是最后一条收货地址，则删除成功后无需再执行其他操作。统计收货地址数量的功能此前已经完成，无需再次开发。</p>
+<h4 id="1-2-接口与抽象方法-3"><a href="#1-2-接口与抽象方法-3" class="headerlink" title="1.2 接口与抽象方法"></a>1.2 接口与抽象方法</h4><p>在AddressMapper接口中添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据收货地址id删除数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> aid 收货地址id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 受影响的行数</span><br><span class="hljs-comment"> */</span><br>Integer <span class="hljs-title function_">deleteByAid</span><span class="hljs-params">(Integer aid)</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 查询某用户最后修改的收货地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 该用户最后修改的收货地址，如果该用户没有收货地址数据则返回null</span><br><span class="hljs-comment"> */</span><br>Address <span class="hljs-title function_">findLastModified</span><span class="hljs-params">(Integer uid)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-配置SQL映射-3"><a href="#1-3-配置SQL映射-3" class="headerlink" title="1.3 配置SQL映射"></a>1.3 配置SQL映射</h4><p>1.在AddressMapper.xml文件中添加以上两个抽象方法的映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 根据收货地址id删除数据：Integer deleteByAid(Integer aid) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;deleteByAid&quot;</span>&gt;</span><br>    DELETE FROM<br>        t_address<br>    WHERE<br>        aid=#&#123;aid&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">delete</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 查询某用户最后修改的收货地址：Address findLastModified(Integer uid) --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findLastModified&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;AddressEntityMap&quot;</span>&gt;</span><br>    SELECT<br>        *<br>    FROM<br>        t_address<br>    WHERE<br>        uid=#&#123;uid&#125;<br>    ORDER BY<br>        modified_time DESC<br>        LIMIT 0,1<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressMapperTests测试类中添加单元测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteByAid</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">aid</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> addressMapper.deleteByAid(aid);<br>    System.out.println(<span class="hljs-string">&quot;rows=&quot;</span> + rows);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findLastModified</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">30</span>;<br>    <span class="hljs-type">Address</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> addressMapper.findLastModified(uid);<br>    System.out.println(result);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-删除收货地址-业务层"><a href="#2-删除收货地址-业务层" class="headerlink" title="2 删除收货地址-业务层"></a>2 删除收货地址-业务层</h3><h4 id="2-1-规划异常-3"><a href="#2-1-规划异常-3" class="headerlink" title="2.1 规划异常"></a>2.1 规划异常</h4><p>在执行删除操作时，可能会删除数据失败，此时抛出DeleteException异常。在创建com.cy.store.service.ex.DeleteException异常类，并继承自ServiceException类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.ex;<br><br><span class="hljs-comment">/** 删除数据失败的异常 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeleteException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceException</span> &#123;<br>    <span class="hljs-comment">// Override Methods...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-接口与抽象方法-4"><a href="#2-2-接口与抽象方法-4" class="headerlink" title="2.2 接口与抽象方法"></a>2.2 接口与抽象方法</h4><p>在IAddressService接口中添加删除收货地址的抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 删除收货地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> aid 收货地址id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> username 当前登录的用户名</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(Integer aid, Integer uid, String username)</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-实现抽象方法-3"><a href="#2-3-实现抽象方法-3" class="headerlink" title="2.3 实现抽象方法"></a>2.3 实现抽象方法</h4><p>1.在AddressServiceImpl实现类中实现以上两个抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(Integer aid, Integer uid, String username)</span> &#123;<br>    <span class="hljs-comment">// 根据参数aid，调用findByAid()查询收货地址数据</span><br>    <span class="hljs-type">Address</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> addressMapper.findByAid(aid);<br>    <span class="hljs-comment">// 判断查询结果是否为null</span><br>    <span class="hljs-keyword">if</span> (result == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// 是：抛出AddressNotFoundException</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AddressNotFoundException</span>(<span class="hljs-string">&quot;尝试访问的收货地址数据不存在&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 判断查询结果中的uid与参数uid是否不一致(使用equals()判断)</span><br>    <span class="hljs-keyword">if</span> (!result.getUid().equals(uid)) &#123;<br>        <span class="hljs-comment">// 是：抛出AccessDeniedException：非法访问</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AccessDeniedException</span>(<span class="hljs-string">&quot;非常访问&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 根据参数aid，调用deleteByAid()执行删除</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows1</span> <span class="hljs-operator">=</span> addressMapper.deleteByAid(aid);<br>    <span class="hljs-keyword">if</span> (rows1 != <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeleteException</span>(<span class="hljs-string">&quot;删除收货地址数据时出现未知错误，请联系系统管理员&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 判断查询结果中的isDefault是否为0</span><br>    <span class="hljs-keyword">if</span> (result.getIsDefault() == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 调用持久层的countByUid()统计目前还有多少收货地址</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> addressMapper.countByUid(uid);<br>    <span class="hljs-comment">// 判断目前的收货地址的数量是否为0</span><br>    <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 调用findLastModified()找出用户最近修改的收货地址数据</span><br>    <span class="hljs-type">Address</span> <span class="hljs-variable">lastModified</span> <span class="hljs-operator">=</span> addressMapper.findLastModified(uid);<br>    <span class="hljs-comment">// 从以上查询结果中找出aid属性值</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">lastModifiedAid</span> <span class="hljs-operator">=</span> lastModified.getAid();<br>    <span class="hljs-comment">// 调用持久层的updateDefaultByAid()方法执行设置默认收货地址，并获取返回的受影响的行数</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows2</span> <span class="hljs-operator">=</span> addressMapper.updateDefaultByAid(lastModifiedAid, username, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>    <span class="hljs-comment">// 判断受影响的行数是否不为1</span><br>    <span class="hljs-keyword">if</span> (rows2 != <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-comment">// 是：抛出UpdateException</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateException</span>(<span class="hljs-string">&quot;更新收货地址数据时出现未知错误，请联系系统管理员&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressServiceTests测试类中添加单元测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">aid</span> <span class="hljs-operator">=</span> <span class="hljs-number">18</span>;<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">30</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;明明&quot;</span>;<br>        addressService.delete(aid, uid, username);<br>        System.out.println(<span class="hljs-string">&quot;OK.&quot;</span>);<br>    &#125; <span class="hljs-keyword">catch</span> (ServiceException e) &#123;<br>        System.out.println(e.getClass().getSimpleName());<br>        System.out.println(e.getMessage());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-删除收货地址-控制器"><a href="#3-删除收货地址-控制器" class="headerlink" title="3 删除收货地址-控制器"></a>3 删除收货地址-控制器</h3><h4 id="3-1-处理异常-2"><a href="#3-1-处理异常-2" class="headerlink" title="3.1 处理异常"></a>3.1 处理异常</h4><p>在BaseController类中添加DeleteException异常的处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ...</span><br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e <span class="hljs-keyword">instanceof</span> DeleteException) &#123;<br>    result.setState(<span class="hljs-number">5002</span>);<br>&#125;<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-设计请求-2"><a href="#3-2-设计请求-2" class="headerlink" title="3.2 设计请求"></a>3.2 设计请求</h4><p>设计用户提交的请求，并设计响应的方式。</p>
+<pre><code class="hljs">请求路径：/addresses/&#123;aid&#125;/delete
+请求参数：@PathVariable(&quot;aid&quot;) Integer aid, HttpSession session
+请求类型：POST
+响应结果：JsonResult&lt;Void&gt;
+</code></pre>
+<h4 id="3-3-处理请求-2"><a href="#3-3-处理请求-2" class="headerlink" title="3.3 处理请求"></a>3.3 处理请求</h4><p>1.在AddressController类中添加处理请求的delete()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequestMapping(&quot;&#123;aid&#125;/delete&quot;)</span><br><span class="hljs-keyword">public</span> JsonResult&lt;Void&gt; <span class="hljs-title function_">delete</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;aid&quot;)</span> Integer aid, HttpSession session)</span> &#123;<br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> getUsernameFromSession(session);<br>    addressService.delete(aid, uid, username);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;Void&gt;(OK);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/addresses/26/delete%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/addresses/26/delete进行测试。</a></p>
+<h3 id="4-删除收货地址-前端页面"><a href="#4-删除收货地址-前端页面" class="headerlink" title="4 删除收货地址-前端页面"></a>4 删除收货地址-前端页面</h3><p>1.在address.html页面中body标签内部的script标签内，添加设置用户删除收货地址的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">deleteByAid</span>(<span class="hljs-params">aid</span>) &#123;<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/addresses/&quot;</span> + aid + <span class="hljs-string">&quot;/delete&quot;</span>,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                <span class="hljs-title function_">showAddressList</span>();<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;删除收货地址失败！&quot;</span> + json.<span class="hljs-property">message</span>);<br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;您的登录信息已经过期，请重新登录！HTTP响应码：&quot;</span> + json.<span class="hljs-property">status</span>);<br>            location.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;login.html&quot;</span>;<br>        &#125;<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.给showAddressList()方法中的“设为默认”超链接按钮添加设置默认收货地址的点击事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;td&gt;<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;deleteByAid(#&#123;aid&#125;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-xs add-del btn-info&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fa fa-trash-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> 删除<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>&lt;/td&gt;<br></code></pre></td></tr></table></figure>
+
+<p>3.完成后启动项目，打开浏览器先登录，再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/address.html%E9%A1%B5%E9%9D%A2%EF%BC%8C%E7%82%B9%E5%87%BB%E2%80%9C%E5%88%A0%E9%99%A4%E2%80%9D%E8%B6%85%E9%93%BE%E6%8E%A5%E6%8C%89%E9%92%AE%E8%BF%9B%E8%A1%8C%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/web/address.html页面，点击“删除”超链接按钮进行功能测试。</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E/" class="category-chain-item">电脑商城</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SSM/">#SSM</a>
+      
+        <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/">#项目练习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电脑商城06</div>
+      <div>http://example.com/2023/05/08/电脑商城06/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>mao-6083</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/08/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E07/" title="电脑商城07">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电脑商城07</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/27/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E05/" title="电脑商城05">
+                        <span class="hidden-mobile">电脑商城05</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","appKey":"hq1Ly0PaMiEZki7tleyXTlPd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

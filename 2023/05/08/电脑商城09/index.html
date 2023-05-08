@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/p1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="mao-6083">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="创建订单1 订单-创建数据表1.使用use命令先选中store数据库。 1USE store;  2.在store数据库中创建t_order和t_order_item数据表。 12345678910111213141516171819202122232425262728293031323334CREATE TABLE t_order (	oid INT AUTO_INCREMENT COMMENT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电脑商城09">
+<meta property="og:url" content="http://example.com/2023/05/08/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E09/index.html">
+<meta property="og:site_name" content="画画的baby">
+<meta property="og:description" content="创建订单1 订单-创建数据表1.使用use命令先选中store数据库。 1USE store;  2.在store数据库中创建t_order和t_order_item数据表。 12345678910111213141516171819202122232425262728293031323334CREATE TABLE t_order (	oid INT AUTO_INCREMENT COMMENT">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p3.jpg">
+<meta property="article:published_time" content="2023-05-08T11:56:27.000Z">
+<meta property="article:modified_time" content="2023-05-08T11:57:54.783Z">
+<meta property="article:author" content="mao-6083">
+<meta property="article:tag" content="SSM">
+<meta property="article:tag" content="项目练习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/p3.jpg">
+  
+  
+  
+  <title>电脑商城09 - 画画的baby</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","app_key":"hq1Ly0PaMiEZki7tleyXTlPd","server_url":"https://wdlcfe27.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MZX的个人博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/p3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电脑商城09"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-08 19:56" pubdate>
+          2023年5月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          112 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电脑商城09</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="创建订单"><a href="#创建订单" class="headerlink" title="创建订单"></a>创建订单</h2><h3 id="1-订单-创建数据表"><a href="#1-订单-创建数据表" class="headerlink" title="1 订单-创建数据表"></a>1 订单-创建数据表</h3><p>1.使用use命令先选中store数据库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">USE store;<br></code></pre></td></tr></table></figure>
+
+<p>2.在store数据库中创建t_order和t_order_item数据表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE t_order (<br>	oid INT AUTO_INCREMENT COMMENT &#x27;订单id&#x27;,<br>	uid INT NOT NULL COMMENT &#x27;用户id&#x27;,<br>	recv_name VARCHAR(20) NOT NULL COMMENT &#x27;收货人姓名&#x27;,<br>	recv_phone VARCHAR(20) COMMENT &#x27;收货人电话&#x27;,<br>	recv_province VARCHAR(15) COMMENT &#x27;收货人所在省&#x27;,<br>	recv_city VARCHAR(15) COMMENT &#x27;收货人所在市&#x27;,<br>	recv_area VARCHAR(15) COMMENT &#x27;收货人所在区&#x27;,<br>	recv_address VARCHAR(50) COMMENT &#x27;收货详细地址&#x27;,<br>	total_price BIGINT COMMENT &#x27;总价&#x27;,<br>	status INT COMMENT &#x27;状态：0-未支付，1-已支付，2-已取消，3-已关闭，4-已完成&#x27;,<br>	order_time DATETIME COMMENT &#x27;下单时间&#x27;,<br>	pay_time DATETIME COMMENT &#x27;支付时间&#x27;,<br>	created_user VARCHAR(20) COMMENT &#x27;创建人&#x27;,<br>	created_time DATETIME COMMENT &#x27;创建时间&#x27;,<br>	modified_user VARCHAR(20) COMMENT &#x27;修改人&#x27;,<br>	modified_time DATETIME COMMENT &#x27;修改时间&#x27;,<br>	PRIMARY KEY (oid)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8;<br><br>CREATE TABLE t_order_item (<br>	id INT AUTO_INCREMENT COMMENT &#x27;订单中的商品记录的id&#x27;,<br>	oid INT NOT NULL COMMENT &#x27;所归属的订单的id&#x27;,<br>	pid INT NOT NULL COMMENT &#x27;商品的id&#x27;,<br>	title VARCHAR(100) NOT NULL COMMENT &#x27;商品标题&#x27;,<br>	image VARCHAR(500) COMMENT &#x27;商品图片&#x27;,<br>	price BIGINT COMMENT &#x27;商品价格&#x27;,<br>	num INT COMMENT &#x27;购买数量&#x27;,<br>	created_user VARCHAR(20) COMMENT &#x27;创建人&#x27;,<br>	created_time DATETIME COMMENT &#x27;创建时间&#x27;,<br>	modified_user VARCHAR(20) COMMENT &#x27;修改人&#x27;,<br>	modified_time DATETIME COMMENT &#x27;修改时间&#x27;,<br>	PRIMARY KEY (id)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-订单-创建实体类"><a href="#2-订单-创建实体类" class="headerlink" title="2 订单-创建实体类"></a>2 订单-创建实体类</h3><p>1.在com.cy.store.entity包下创建Order实体类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.entity;<br><span class="hljs-keyword">import</span> java.io.Serializable;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-comment">/** 订单数据的实体类 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Order</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseEntity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer oid;<br>    <span class="hljs-keyword">private</span> Integer uid;<br>    <span class="hljs-keyword">private</span> String recvName;<br>    <span class="hljs-keyword">private</span> String recvPhone;<br>    <span class="hljs-keyword">private</span> String recvProvince;<br>    <span class="hljs-keyword">private</span> String recvCity;<br>    <span class="hljs-keyword">private</span> String recvArea;<br>    <span class="hljs-keyword">private</span> String recvAddress;<br>    <span class="hljs-keyword">private</span> Long totalPrice;<br>    <span class="hljs-keyword">private</span> Integer status;<br>    <span class="hljs-keyword">private</span> Date orderTime;<br>    <span class="hljs-keyword">private</span> Date payTime;<br>	<br>	<span class="hljs-comment">// Generate: Getter and Setter、Generate hashCode() and equals()、toString()</span><br>&#125;    <br></code></pre></td></tr></table></figure>
+
+<p>2.在com.cy.store.entity包下创建OrderItem实体类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.entity;<br><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-comment">/** 订单中的商品数据 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderItem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseEntity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer id;<br>    <span class="hljs-keyword">private</span> Integer oid;<br>    <span class="hljs-keyword">private</span> Integer pid;<br>    <span class="hljs-keyword">private</span> String title;<br>    <span class="hljs-keyword">private</span> String image;<br>    <span class="hljs-keyword">private</span> Long price;<br>    <span class="hljs-keyword">private</span> Integer num;<br><br>	<span class="hljs-comment">// Generate: Getter and Setter、Generate hashCode() and equals()、toString()</span><br>&#125;    <br></code></pre></td></tr></table></figure>
+
+<h3 id="3-订单-持久层"><a href="#3-订单-持久层" class="headerlink" title="3 订单-持久层"></a>3 订单-持久层</h3><h4 id="3-1-规划需要执行的SQL语句"><a href="#3-1-规划需要执行的SQL语句" class="headerlink" title="3.1 规划需要执行的SQL语句"></a>3.1 规划需要执行的SQL语句</h4><p>1.插入订单数据的SQL语句大致是。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO t_order (<br>	uid,<br>	recv_name,<br>	recv_phone,<br>	recv_province,<br>	recv_city,<br>	recv_area,<br>	recv_address,<br>	total_price,<br>	status,<br>	order_time,<br>	pay_time,<br>	created_user,<br>	created_time,<br>	modified_user,<br>	modified_time <br>)<br>VALUES (<br>	#对应字段的值列表<br>)<br></code></pre></td></tr></table></figure>
+
+<p>2.插入订单商品数据的SQL语句大致是。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO t_order_item ( <br>	oid, <br>	pid, <br>	title, <br>	image, <br>	price, <br>	num, <br>	created_user, <br>	created_time, <br>	modified_user, <br>	modified_time <br>)<br>VALUES ( <br>	#对应字段的值列表<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-接口与抽象方法"><a href="#3-2-接口与抽象方法" class="headerlink" title="3.2 接口与抽象方法"></a>3.2 接口与抽象方法</h4><p>在com.cy.store.mapper包下创建OrderMapper接口并在接口中添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.mapper;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Order;<br><span class="hljs-keyword">import</span> com.cy.store.entity.OrderItem;<br><br><span class="hljs-comment">/** 处理订单及订单商品数据的持久层接口 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">OrderMapper</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 插入订单数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> order 订单数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 受影响的行数</span><br><span class="hljs-comment">     */</span><br>    Integer <span class="hljs-title function_">insertOrder</span><span class="hljs-params">(Order order)</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 插入订单商品数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> orderItem 订单商品数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 受影响的行数</span><br><span class="hljs-comment">     */</span><br>    Integer <span class="hljs-title function_">insertOrderItem</span><span class="hljs-params">(OrderItem orderItem)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-3-配置SQL映射"><a href="#3-3-配置SQL映射" class="headerlink" title="3.3 配置SQL映射"></a>3.3 配置SQL映射</h4><p>1.在main\resources\mapper文件夹下创建OrderMapper.xml文件，并添加抽象方法的映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span></span><br><span class="hljs-meta">        <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="hljs-meta">        <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.cy.store.mapper.OrderMapper&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 插入订单数据：Integer insertOrder(Order order) --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insertOrder&quot;</span> <span class="hljs-attr">useGeneratedKeys</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">keyProperty</span>=<span class="hljs-string">&quot;oid&quot;</span>&gt;</span><br>        INSERT INTO t_order (<br>            uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address,<br>            total_price,status, order_time, pay_time, created_user, created_time, modified_user,<br>            modified_time<br>        ) VALUES (<br>            #&#123;uid&#125;, #&#123;recvName&#125;, #&#123;recvPhone&#125;, #&#123;recvProvince&#125;, #&#123;recvCity&#125;, #&#123;recvArea&#125;,<br>            #&#123;recvAddress&#125;, #&#123;totalPrice&#125;, #&#123;status&#125;, #&#123;orderTime&#125;, #&#123;payTime&#125;, #&#123;createdUser&#125;,<br>            #&#123;createdTime&#125;, #&#123;modifiedUser&#125;, #&#123;modifiedTime&#125;<br>        )<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br><br>    <span class="hljs-comment">&lt;!-- 插入订单商品数据：Integer insertOrderItem(OrderItem orderItem) --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;insertOrderItem&quot;</span> <span class="hljs-attr">useGeneratedKeys</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">keyProperty</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><br>        INSERT INTO t_order_item (<br>            oid, pid, title, image, price, num, created_user,<br>            created_time, modified_user, modified_time<br>        ) VALUES (<br>            #&#123;oid&#125;, #&#123;pid&#125;, #&#123;title&#125;, #&#123;image&#125;, #&#123;price&#125;, #&#123;num&#125;, #&#123;createdUser&#125;,<br>            #&#123;createdTime&#125;, #&#123;modifiedUser&#125;, #&#123;modifiedTime&#125;<br>        )<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在com.cy.store.mapper包下创建OrderMapperTests测试类，并添加测试方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.mapper;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Order;<br><span class="hljs-keyword">import</span> com.cy.store.entity.OrderItem;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><span class="hljs-keyword">import</span> org.junit.runner.RunWith;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><span class="hljs-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;<br><br><span class="hljs-meta">@RunWith(SpringRunner.class)</span><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderMapperTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> OrderMapper orderMapper;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertOrder</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Order</span> <span class="hljs-variable">order</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Order</span>();<br>        order.setUid(<span class="hljs-number">31</span>);<br>        order.setRecvName(<span class="hljs-string">&quot;小王&quot;</span>);<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> orderMapper.insertOrder(order);<br>        System.out.println(<span class="hljs-string">&quot;rows=&quot;</span> + rows);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertOrderItem</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">OrderItem</span> <span class="hljs-variable">orderItem</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OrderItem</span>();<br>        orderItem.setOid(<span class="hljs-number">1</span>);<br>        orderItem.setPid(<span class="hljs-number">2</span>);<br>        orderItem.setTitle(<span class="hljs-string">&quot;高档铅笔&quot;</span>);<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">rows</span> <span class="hljs-operator">=</span> orderMapper.insertOrderItem(orderItem);<br>        System.out.println(<span class="hljs-string">&quot;rows=&quot;</span> + rows);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-订单-业务层"><a href="#4-订单-业务层" class="headerlink" title="4 订单-业务层"></a>4 订单-业务层</h3><h4 id="4-1-规划异常"><a href="#4-1-规划异常" class="headerlink" title="4.1 规划异常"></a>4.1 规划异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="4-2-接口与抽象方法"><a href="#4-2-接口与抽象方法" class="headerlink" title="4.2 接口与抽象方法"></a>4.2 接口与抽象方法</h4><p>1.由于处理过程中还需要涉及收货地址数据的处理，所以需要先在IAddressService接口中添加getByAid()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据收货地址数据的id，查询收货地址详情</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> aid 收货地址id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> uid 归属的用户id</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 匹配的收货地址详情</span><br><span class="hljs-comment"> */</span><br>Address <span class="hljs-title function_">getByAid</span><span class="hljs-params">(Integer aid, Integer uid)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>2.在AddressServiceImpl类中实现接口中的getByAid()抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Address <span class="hljs-title function_">getByAid</span><span class="hljs-params">(Integer aid, Integer uid)</span> &#123;<br>    <span class="hljs-comment">// 根据收货地址数据id，查询收货地址详情</span><br>    <span class="hljs-type">Address</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> addressMapper.findByAid(aid);<br><br>    <span class="hljs-keyword">if</span> (address == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AddressNotFoundException</span>(<span class="hljs-string">&quot;尝试访问的收货地址数据不存在&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!address.getUid().equals(uid)) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AccessDeniedException</span>(<span class="hljs-string">&quot;非法访问&quot;</span>);<br>    &#125;<br>    address.setProvinceCode(<span class="hljs-literal">null</span>);<br>    address.setCityCode(<span class="hljs-literal">null</span>);<br>    address.setAreaCode(<span class="hljs-literal">null</span>);<br>    address.setCreatedUser(<span class="hljs-literal">null</span>);<br>    address.setCreatedTime(<span class="hljs-literal">null</span>);<br>    address.setModifiedUser(<span class="hljs-literal">null</span>);<br>    address.setModifiedTime(<span class="hljs-literal">null</span>);<br>    <span class="hljs-keyword">return</span> address;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.在com.cy.store.service包下创建IOrderService业务层接口并添加抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Order;<br><br><span class="hljs-comment">/** 处理订单和订单数据的业务层接口 */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IOrderService</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 创建订单</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> aid 收货地址的id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> cids 即将购买的商品数据在购物车表中的id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> uid 当前登录的用户的id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> username 当前登录的用户名</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 成功创建的订单数据</span><br><span class="hljs-comment">     */</span><br>    Order <span class="hljs-title function_">create</span><span class="hljs-params">(Integer aid, Integer[] cids, Integer uid, String username)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-3-实现抽象方法"><a href="#4-3-实现抽象方法" class="headerlink" title="4.3 实现抽象方法"></a>4.3 实现抽象方法</h4><p>1.在com.cy.store.service.impl包下创建OrderServiceImpl业务层实现类并实现IOrderService接口；在类定义之前添加@Service注解，在类中添加OrderMapper订单持久层对象、IAddressService处理收货地址对象、ICartService购物车数据对象，并都添加@Autowired注解进行修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service.impl;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Address;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Order;<br><span class="hljs-keyword">import</span> com.cy.store.entity.OrderItem;<br><span class="hljs-keyword">import</span> com.cy.store.mapper.OrderMapper;<br><span class="hljs-keyword">import</span> com.cy.store.service.IAddressService;<br><span class="hljs-keyword">import</span> com.cy.store.service.ICartService;<br><span class="hljs-keyword">import</span> com.cy.store.service.IOrderService;<br><span class="hljs-keyword">import</span> com.cy.store.service.ex.InsertException;<br><span class="hljs-keyword">import</span> com.cy.store.vo.CartVO;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><span class="hljs-keyword">import</span> org.springframework.transaction.annotation.Transactional;<br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/** 处理订单和订单数据的业务层实现类 */</span><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IOrderService</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> OrderMapper orderMapper;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IAddressService addressService;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ICartService cartService;<br><br>	<span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.在OrderServiceImpl类中重写父接口中的create()抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Order <span class="hljs-title function_">create</span><span class="hljs-params">(Integer aid, Integer[] cids, Integer uid, String username)</span> &#123;<br>    <span class="hljs-comment">// 创建当前时间对象</span><br><br>    <span class="hljs-comment">// 根据cids查询所勾选的购物车列表中的数据</span><br><br>    <span class="hljs-comment">// 计算这些商品的总价</span><br><br>    <span class="hljs-comment">// 创建订单数据对象</span><br>    <span class="hljs-comment">// 补全数据：uid</span><br>    <span class="hljs-comment">// 查询收货地址数据</span><br>    <span class="hljs-comment">// 补全数据：收货地址相关的6项</span><br>    <span class="hljs-comment">// 补全数据：totalPrice</span><br>    <span class="hljs-comment">// 补全数据：status</span><br>    <span class="hljs-comment">// 补全数据：下单时间</span><br>    <span class="hljs-comment">// 补全数据：日志</span><br>    <span class="hljs-comment">// 插入订单数据</span><br><br>    <span class="hljs-comment">// 遍历carts，循环插入订单商品数据</span><br>    <span class="hljs-comment">// 创建订单商品数据</span><br>    <span class="hljs-comment">// 补全数据：oid(order.getOid())</span><br>    <span class="hljs-comment">// 补全数据：pid, title, image, price, num</span><br>    <span class="hljs-comment">// 补全数据：4项日志</span><br>    <span class="hljs-comment">// 插入订单商品数据</span><br><br>    <span class="hljs-comment">// 返回</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.OrderServiceImpl类中的create()方法具体逻辑代码实现见下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Order <span class="hljs-title function_">create</span><span class="hljs-params">(Integer aid, Integer[] cids, Integer uid, String username)</span> &#123;<br>    <span class="hljs-comment">// 创建当前时间对象</span><br>    <span class="hljs-type">Date</span> <span class="hljs-variable">now</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br><br>    <span class="hljs-comment">// 根据cids查询所勾选的购物车列表中的数据</span><br>    List&lt;CartVO&gt; carts = cartService.getVOByCids(uid, cids);<br><br>    <span class="hljs-comment">// 计算这些商品的总价</span><br>    <span class="hljs-type">long</span> <span class="hljs-variable">totalPrice</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (CartVO cart : carts) &#123;<br>        totalPrice += cart.getRealPrice() * cart.getNum();<br>    &#125;<br><br>    <span class="hljs-comment">// 创建订单数据对象</span><br>    <span class="hljs-type">Order</span> <span class="hljs-variable">order</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Order</span>();<br>    <span class="hljs-comment">// 补全数据：uid</span><br>    order.setUid(uid);<br>    <span class="hljs-comment">// 查询收货地址数据</span><br>    <span class="hljs-type">Address</span> <span class="hljs-variable">address</span> <span class="hljs-operator">=</span> addressService.getByAid(aid, uid);<br>    <span class="hljs-comment">// 补全数据：收货地址相关的6项</span><br>    order.setRecvName(address.getName());<br>    order.setRecvPhone(address.getPhone());<br>    order.setRecvProvince(address.getProvinceName());<br>    order.setRecvCity(address.getCityName());<br>    order.setRecvArea(address.getAreaName());<br>    order.setRecvAddress(address.getAddress());<br>    <span class="hljs-comment">// 补全数据：totalPrice</span><br>    order.setTotalPrice(totalPrice);<br>    <span class="hljs-comment">// 补全数据：status</span><br>    order.setStatus(<span class="hljs-number">0</span>);<br>    <span class="hljs-comment">// 补全数据：下单时间</span><br>    order.setOrderTime(now);<br>    <span class="hljs-comment">// 补全数据：日志</span><br>    order.setCreatedUser(username);<br>    order.setCreatedTime(now);<br>    order.setModifiedUser(username);<br>    order.setModifiedTime(now);<br>    <span class="hljs-comment">// 插入订单数据</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">rows1</span> <span class="hljs-operator">=</span> orderMapper.insertOrder(order);<br>    <span class="hljs-keyword">if</span> (rows1 != <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InsertException</span>(<span class="hljs-string">&quot;插入订单数据时出现未知错误，请联系系统管理员&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 遍历carts，循环插入订单商品数据</span><br>    <span class="hljs-keyword">for</span> (CartVO cart : carts) &#123;<br>        <span class="hljs-comment">// 创建订单商品数据</span><br>        <span class="hljs-type">OrderItem</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OrderItem</span>();<br>        <span class="hljs-comment">// 补全数据：setOid(order.getOid())</span><br>        item.setOid(order.getOid());<br>        <span class="hljs-comment">// 补全数据：pid, title, image, price, num</span><br>        item.setPid(cart.getPid());<br>        item.setTitle(cart.getTitle());<br>        item.setImage(cart.getImage());<br>        item.setPrice(cart.getRealPrice());<br>        item.setNum(cart.getNum());<br>        <span class="hljs-comment">// 补全数据：4项日志</span><br>        item.setCreatedUser(username);<br>        item.setCreatedTime(now);<br>        item.setModifiedUser(username);<br>        item.setModifiedTime(now);<br>        <span class="hljs-comment">// 插入订单商品数据</span><br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">rows2</span> <span class="hljs-operator">=</span> orderMapper.insertOrderItem(item);<br>        <span class="hljs-keyword">if</span> (rows2 != <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InsertException</span>(<span class="hljs-string">&quot;插入订单商品数据时出现未知错误，请联系系统管理员&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 返回</span><br>    <span class="hljs-keyword">return</span> order;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4.在com.cy.store.service测试包下创建OrderServiceTests测试类，并添加create()方法进行功能测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.service;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Order;<br><span class="hljs-keyword">import</span> com.cy.store.service.ex.ServiceException;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><span class="hljs-keyword">import</span> org.junit.runner.RunWith;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;<br><span class="hljs-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;<br><br><span class="hljs-meta">@RunWith(SpringRunner.class)</span><br><span class="hljs-meta">@SpringBootTest</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderServiceTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IOrderService orderService;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">create</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">Integer</span> <span class="hljs-variable">aid</span> <span class="hljs-operator">=</span> <span class="hljs-number">21</span>;<br>            Integer[] cids = &#123;<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>,<span class="hljs-number">7</span>&#125;;<br>            <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> <span class="hljs-number">31</span>;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;订单管理员&quot;</span>;<br>            <span class="hljs-type">Order</span> <span class="hljs-variable">order</span> <span class="hljs-operator">=</span> orderService.create(aid, cids, uid, username);<br>            System.out.println(order);<br>        &#125; <span class="hljs-keyword">catch</span> (ServiceException e) &#123;<br>            System.out.println(e.getClass().getSimpleName());<br>            System.out.println(e.getMessage());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-订单-控制器层"><a href="#5-订单-控制器层" class="headerlink" title="5 订单-控制器层"></a>5 订单-控制器层</h3><h4 id="5-1-处理异常"><a href="#5-1-处理异常" class="headerlink" title="5.1 处理异常"></a>5.1 处理异常</h4><blockquote>
+<p><strong>说明</strong>：无异常。</p>
+</blockquote>
+<h4 id="5-2-设计请求"><a href="#5-2-设计请求" class="headerlink" title="5.2 设计请求"></a>5.2 设计请求</h4><p>设计用户提交的请求，并设计响应的方式。</p>
+<pre><code class="hljs">请求路径：/orders/create
+请求参数：Integer aid, Integer[] cids, HttpSession session
+请求类型：POST
+响应结果：JsonResult&lt;Order&gt;
+</code></pre>
+<h4 id="5-3-处理请求"><a href="#5-3-处理请求" class="headerlink" title="5.3 处理请求"></a>5.3 处理请求</h4><p>1.在com.cy.store.controller包下创建OrderController类，并继承自BaseController类；并在类前添加@RequestMapping(“orders”)注解和@RestController注解；在类中声明IOrderService业务对象，然后添加@Autowired注解修饰；最后在类中添加处理请求的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.cy.store.controller;<br><span class="hljs-keyword">import</span> com.cy.store.entity.Order;<br><span class="hljs-keyword">import</span> com.cy.store.service.IOrderService;<br><span class="hljs-keyword">import</span> com.cy.store.util.JsonResult;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpSession;<br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;orders&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IOrderService orderService;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;create&quot;)</span><br>    <span class="hljs-keyword">public</span> JsonResult&lt;Order&gt; <span class="hljs-title function_">create</span><span class="hljs-params">(Integer aid, Integer[] cids, HttpSession session)</span> &#123;<br>        <span class="hljs-comment">// 从Session中取出uid和username</span><br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">uid</span> <span class="hljs-operator">=</span> getUidFromSession(session);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> getUsernameFromSession(session);<br>        <span class="hljs-comment">// 调用业务对象执行业务</span><br>        <span class="hljs-type">Order</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> orderService.create(aid, cids, uid, username);<br>        <span class="hljs-comment">// 返回成功与数据</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JsonResult</span>&lt;Order&gt;(OK, data);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.完成后启动项目，先登录再访问<a target="_blank" rel="noopener" href="http://localhost:8080/orders/create?aid=21&amp;cids=4&amp;cids=5&amp;cids=6&amp;cids=7%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/orders/create?aid=21&amp;cids=4&amp;cids=5&amp;cids=6&amp;cids=7进行测试。</a></p>
+<p><img src="1.png" srcset="/img/loading.gif" lazyload alt="电脑商城09"></p>
+<h3 id="6-订单-前端页面"><a href="#6-订单-前端页面" class="headerlink" title="6 订单-前端页面"></a>6 订单-前端页面</h3><p>1.在orderConfirm.xml页面中的body标签内的script标签内添加“在线支付”按钮的点击时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&quot;#btn-create-order&quot;</span>).<span class="hljs-title function_">click</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    $.<span class="hljs-title function_">ajax</span>(&#123;<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/orders/create&quot;</span>,<br>        <span class="hljs-attr">data</span>: $(<span class="hljs-string">&quot;#form-create-order&quot;</span>).<span class="hljs-title function_">serialize</span>(),<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;JSON&quot;</span>,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>) &#123;<br>            <span class="hljs-keyword">if</span> (json.<span class="hljs-property">state</span> == <span class="hljs-number">200</span>) &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;创建订单成功！&quot;</span>);<br>                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(json.<span class="hljs-property">data</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;创建订单失败！&quot;</span> + json.<span class="hljs-property">message</span>);<br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">xhr</span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;您的登录信息已经过期，请重新登录！HTTP响应码：&quot;</span> + xhr.<span class="hljs-property">status</span>);<br>            location.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;login.html&quot;</span>;<br>        &#125;<br>    &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>2.完成后启动项目，先登录再访问<a target="_blank" rel="noopener" href="http://localhost:8080/web/cart.html%E9%A1%B5%E9%9D%A2%EF%BC%8C%E5%8B%BE%E9%80%89%E8%B4%AD%E8%BD%A6%E4%B8%AD%E7%9A%84%E5%95%86%E5%93%81%EF%BC%8C%E5%86%8D%E7%82%B9%E5%87%BB%E2%80%9C%E7%BB%93%E7%AE%97%E2%80%9D%E6%8C%89%E9%92%AE%EF%BC%8C%E6%9C%80%E5%90%8E%E5%9C%A8%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E9%A1%B5%E4%B8%AD%E7%82%B9%E5%87%BB%E2%80%9C%E5%9C%A8%E7%BA%BF%E6%94%AF%E4%BB%98%E2%80%9D%E6%8C%89%E9%92%AE%E8%BF%9B%E8%A1%8C%E5%8A%9F%E8%83%BD%E7%9A%84%E6%B5%8B%E8%AF%95%E3%80%82">http://localhost:8080/web/cart.html页面，勾选购车中的商品，再点击“结算”按钮，最后在订单确认页中点击“在线支付”按钮进行功能的测试。</a></p>
+<p><img src="2.png" srcset="/img/loading.gif" lazyload alt="电脑商城09"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E/" class="category-chain-item">电脑商城</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SSM/">#SSM</a>
+      
+        <a href="/tags/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/">#项目练习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电脑商城09</div>
+      <div>http://example.com/2023/05/08/电脑商城09/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>mao-6083</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/08/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E10/" title="电脑商城10">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电脑商城10</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/08/%E7%94%B5%E8%84%91%E5%95%86%E5%9F%8E08/" title="电脑商城08">
+                        <span class="hidden-mobile">电脑商城08</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"wDLCFe27NtYeA9ckBFRQLoN3-gzGzoHsz","appKey":"hq1Ly0PaMiEZki7tleyXTlPd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
